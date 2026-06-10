@@ -36,7 +36,7 @@ export default function Projects() {
                 content: (item) =>
                   item.url ? (
                     <Link href={item.url} external>
-                      {t.projects.viewProject}
+                      {t.projects.viewArticle}
                     </Link>
                   ) : null,
               },

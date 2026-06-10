@@ -38,7 +38,7 @@ export const ko = {
   projects: {
     title: "프로젝트",
     stack: "기술 스택",
-    viewProject: "프로젝트 보기",
+    viewArticle: "관련 기사 보기",
   },
   certifications: {
     title: "자격증",

@@ -2,12 +2,12 @@
   {
     "company": "솔트웨어 (Saltware)",
     "role": "AWS · Kubernetes 엔지니어",
-    "startDate": "2021-01",
+    "startDate": "2022-01",
     "endDate": null,
     "highlights": [
       "ZenDesk 기반 AWS 기술/일반/비용 문의 대응 — 2026년 4월 기준 누적 1,152건 처리, ECS·EKS·DevOps 티켓 에스컬레이션 전담",
       "다수 고객사 EKS 버전 무중단 업그레이드 수행 (리파인 1.25→1.31, 케어랩스·이즐랩스 등) — 애드온·오픈소스 동반 업그레이드 및 절차 문서화",
-      "Ezl Labs(구 캐시비) EKS 환경 대리 운영 — 4개 AWS 계정(mgmt/dev/stg/prod) 환경 분리, Terraform IaC, GitHub·CodePipeline·ArgoCD CI/CD, CloudWatch·Prometheus 알람 및 24/7 On-Call 대응",
+      "Ezl Labs(구 캐시비) EKS 환경 대리 운영 — 4개 AWS 계정(mgmt/dev/stg/prod) 환경 분리, Terraform IaC, CI/CD, Monitoring 및 24/7 On-Call 대응",
       "이머전데이 AWS 핸즈온 세미나 강사 — General·Containers(EKS/ECS)·DevOps 주제 오프라인/온라인 강의 다수 진행"
     ]
   }
