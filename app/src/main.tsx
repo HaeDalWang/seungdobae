@@ -3,6 +3,9 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import "@cloudscape-design/global-styles/index.css";
+// Cloudscape 전역 스타일 뒤에 얹어야 핸드오프 토큰·폰트가 우선한다.
+import "./styles/fonts";
+import "./styles/global.css";
 import { applyColorMode, getInitialMode } from "./lib/theme";
 import App from "./App";
 

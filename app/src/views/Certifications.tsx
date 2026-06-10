@@ -1,74 +1,63 @@
-import ContentLayout from "@cloudscape-design/components/content-layout";
-import Header from "@cloudscape-design/components/header";
-import Cards from "@cloudscape-design/components/cards";
-import Link from "@cloudscape-design/components/link";
-import Box from "@cloudscape-design/components/box";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-
 import { useStrings } from "../i18n";
 import { useCredly } from "../data/hooks";
-import type { CredlyBadge } from "../data/types";
 import { formatDate } from "../lib/format";
 import DataBoundary from "../components/DataBoundary";
-
-const BADGE_IMAGE_SIZE = 80;
+import "../styles/console.css";
 
 export default function Certifications() {
   const t = useStrings();
   const { data, loading, error } = useCredly();
 
   return (
-    <ContentLayout header={<Header variant="h1">{t.certifications.title}</Header>}>
+    <div className="hd-scope">
+      <div className="hd-pghead">
+        <h1 className="hd-pgtitle">{t.certifications.title}</h1>
+      </div>
+
       <DataBoundary loading={loading} error={error} isEmpty={data.badges.length === 0}>
-        <Cards<CredlyBadge>
-          items={data.badges}
-          cardDefinition={{
-            header: (badge) => (
-              <SpaceBetween direction="horizontal" size="s" alignItems="center">
+        <div className="hd-certgrid">
+          {data.badges.map((badge) => (
+            <div className="hd-cert" key={badge.id}>
+              <div className="hd-cert-head">
                 {badge.imageUrl ? (
                   <img
+                    className="hd-cert-img"
                     src={badge.imageUrl}
                     alt={badge.name}
-                    width={BADGE_IMAGE_SIZE}
-                    height={BADGE_IMAGE_SIZE}
+                    width={64}
+                    height={64}
                     loading="lazy"
                   />
                 ) : null}
-                <Box variant="span">{badge.name}</Box>
-              </SpaceBetween>
-            ),
-            sections: [
-              {
-                id: "issuer",
-                header: t.certifications.issuedBy,
-                content: (badge) => badge.issuer,
-              },
-              {
-                id: "issuedAt",
-                header: t.certifications.issuedAt,
-                content: (badge) => formatDate(badge.issuedAt),
-              },
-              {
-                id: "skills",
-                header: t.certifications.skills,
-                content: (badge) =>
-                  badge.skills.length > 0 ? badge.skills.join(" · ") : "—",
-              },
-              {
-                id: "link",
-                content: (badge) =>
-                  badge.url ? (
-                    <Link href={badge.url} external>
-                      {t.certifications.viewBadge}
-                    </Link>
-                  ) : null,
-              },
-            ],
-          }}
-          cardsPerRow={[{ cards: 1 }, { minWidth: 500, cards: 2 }, { minWidth: 900, cards: 3 }]}
-          empty={<Box color="text-status-inactive">{t.common.empty}</Box>}
-        />
+                <div>
+                  <div className="hd-cert-name">{badge.name}</div>
+                  <div className="hd-cert-meta">
+                    {badge.issuer} · {formatDate(badge.issuedAt)}
+                  </div>
+                </div>
+              </div>
+
+              {badge.skills.length > 0 ? (
+                <div className="hd-taglist">
+                  {badge.skills.slice(0, 6).map((skill) => (
+                    <span className="hd-tag" key={skill}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+
+              {badge.url ? (
+                <div className="hd-cert-foot">
+                  <a className="hd-link" href={badge.url} target="_blank" rel="noreferrer">
+                    {t.certifications.viewBadge}
+                  </a>
+                </div>
+              ) : null}
+            </div>
+          ))}
+        </div>
       </DataBoundary>
-    </ContentLayout>
+    </div>
   );
 }

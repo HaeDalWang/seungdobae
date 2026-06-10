@@ -1,55 +1,38 @@
-import ContentLayout from "@cloudscape-design/components/content-layout";
-import Header from "@cloudscape-design/components/header";
-import Cards from "@cloudscape-design/components/cards";
-import Link from "@cloudscape-design/components/link";
-import Box from "@cloudscape-design/components/box";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-
 import { useStrings } from "../i18n";
 import { useProjects } from "../data/hooks";
-import type { ProjectItem } from "../data/types";
 import DataBoundary from "../components/DataBoundary";
+import "../styles/console.css";
 
 export default function Projects() {
   const t = useStrings();
   const { data, loading, error } = useProjects();
 
   return (
-    <ContentLayout header={<Header variant="h1">{t.projects.title}</Header>}>
+    <div className="hd-scope">
+      <div className="hd-pghead">
+        <h1 className="hd-pgtitle">{t.projects.title}</h1>
+      </div>
+
       <DataBoundary loading={loading} error={error} isEmpty={data.length === 0}>
-        <Cards<ProjectItem>
-          items={data}
-          cardDefinition={{
-            header: (item) => item.title,
-            sections: [
-              {
-                id: "description",
-                content: (item) => <Box variant="p">{item.description}</Box>,
-              },
-              {
-                id: "stack",
-                header: t.projects.stack,
-                content: (item) => item.stack.join(" · "),
-              },
-              {
-                id: "link",
-                content: (item) =>
-                  item.url ? (
-                    <Link href={item.url} external>
-                      {t.projects.viewArticle}
-                    </Link>
-                  ) : null,
-              },
-            ],
-          }}
-          cardsPerRow={[{ cards: 1 }, { minWidth: 600, cards: 2 }]}
-          empty={
-            <SpaceBetween size="xxs">
-              <Box color="text-status-inactive">{t.common.empty}</Box>
-            </SpaceBetween>
-          }
-        />
+        <div className="hd-projgrid">
+          {data.map((item) => (
+            <div className="hd-proj" key={item.title}>
+              <div className="hd-proj-title">{item.title}</div>
+              <div className="hd-proj-desc">{item.description}</div>
+              {item.stack.length > 0 ? (
+                <div className="hd-proj-stack">{item.stack.join(" · ")}</div>
+              ) : null}
+              {item.url ? (
+                <div className="hd-proj-foot">
+                  <a className="hd-link" href={item.url} target="_blank" rel="noreferrer">
+                    {t.projects.viewArticle}
+                  </a>
+                </div>
+              ) : null}
+            </div>
+          ))}
+        </div>
       </DataBoundary>
-    </ContentLayout>
+    </div>
   );
 }

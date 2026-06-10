@@ -1,47 +1,44 @@
-import ContentLayout from "@cloudscape-design/components/content-layout";
-import Header from "@cloudscape-design/components/header";
-import Container from "@cloudscape-design/components/container";
-import SpaceBetween from "@cloudscape-design/components/space-between";
-import Box from "@cloudscape-design/components/box";
-
 import { useStrings } from "../i18n";
 import { useExperience } from "../data/hooks";
 import { formatYearMonth } from "../lib/format";
+import ConsoleCard from "../components/ConsoleCard";
 import DataBoundary from "../components/DataBoundary";
+import "../styles/console.css";
 
 export default function Experience() {
   const t = useStrings();
   const { data, loading, error } = useExperience();
 
   return (
-    <ContentLayout header={<Header variant="h1">{t.experience.title}</Header>}>
+    <div className="hd-scope">
+      <div className="hd-pghead">
+        <h1 className="hd-pgtitle">{t.experience.title}</h1>
+      </div>
+
       <DataBoundary loading={loading} error={error} isEmpty={data.length === 0}>
-        <SpaceBetween size="l">
+        <div className="hd-stack">
           {data.map((item, index) => {
             const period = `${formatYearMonth(item.startDate)} – ${
               item.endDate ? formatYearMonth(item.endDate) : t.experience.present
             }`;
             return (
-              <Container
-                key={`${item.company}-${index}`}
-                header={
-                  <Header variant="h2" description={period}>
+              <ConsoleCard key={`${item.company}-${index}`}>
+                <div className="hd-tl-item">
+                  <div className="hd-tl-role">
                     {item.role} · {item.company}
-                  </Header>
-                }
-              >
-                <ul>
-                  {item.highlights.map((highlight, hi) => (
-                    <li key={hi}>
-                      <Box variant="span">{highlight}</Box>
-                    </li>
-                  ))}
-                </ul>
-              </Container>
+                  </div>
+                  <div className="hd-tl-period">{period}</div>
+                  <ul className="hd-tl-list">
+                    {item.highlights.map((highlight, hi) => (
+                      <li key={hi}>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+              </ConsoleCard>
             );
           })}
-        </SpaceBetween>
+        </div>
       </DataBoundary>
-    </ContentLayout>
+    </div>
   );
 }

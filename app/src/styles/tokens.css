@@ -1,0 +1,84 @@
+/**
+ * 핸드오프 디자인 토큰 ("해달왕 Cloud" — Warm Academic Humanism).
+ *
+ * Cloudscape 다크모드는 body.awsui-dark-mode 클래스를 토글한다.
+ * → :root = 라이트, body.awsui-dark-mode = 다크에 바인딩하면
+ *   기존 토글 하나로 커스텀 컴포넌트 색까지 자동 스왑된다 (단일 소스).
+ *
+ * 원본: design_handoff_aws_console/AWS Console.html 의 :root / [data-theme="dark"]
+ */
+
+:root {
+  /* 표면 */
+  --hd-bg: #f3f0e9;
+  --hd-sf: #fdfaf5;
+  --hd-sf2: #f0ebe1;
+  --hd-bd: #ddd5c0;
+  --hd-bd2: #eae3d5;
+
+  /* 텍스트 */
+  --hd-t1: #2c1810;
+  --hd-t2: #6b5744;
+  --hd-t3: #9b8b7a;
+
+  /* 사이드바 (딥 네이비) */
+  --hd-sb: #1b2a4a;
+  --hd-sb2: #0f1e38;
+  --hd-sbt: #b8cce0;
+  --hd-sbh: rgba(255, 255, 255, 0.065);
+
+  /* 강조 — 테라코타 / 머스터드 / 네이비 */
+  --hd-terr: #d67052;
+  --hd-terrl: #e08a6a;
+  --hd-terrd: rgba(214, 112, 82, 0.13);
+  --hd-must: #f0b857;
+  --hd-mustd: rgba(240, 184, 87, 0.16);
+  --hd-navy: #1b2a4a;
+
+  /* 상태 */
+  --hd-ok: #3d8a65;
+  --hd-okd: rgba(61, 138, 101, 0.13);
+  --hd-warn: #a87420;
+  --hd-warnd: rgba(168, 116, 32, 0.13);
+  --hd-err: #b84040;
+  --hd-errd: rgba(184, 64, 64, 0.13);
+  --hd-info: #1e6fa0;
+  --hd-infod: rgba(30, 111, 160, 0.1);
+
+  /* 그림자·모양 */
+  --hd-shadow: 0 1px 3px rgba(44, 24, 16, 0.07), 0 1px 2px rgba(44, 24, 16, 0.04);
+  --hd-shadow-m: 0 4px 20px rgba(44, 24, 16, 0.1), 0 1px 4px rgba(44, 24, 16, 0.05);
+  --hd-r: 6px;
+  --hd-r-l: 10px;
+
+  /* 서체 */
+  --hd-fs: "Playfair Display", Georgia, serif;
+  --hd-fn: "DM Sans", system-ui, sans-serif;
+  --hd-fm: "Courier New", monospace;
+}
+
+body.awsui-dark-mode {
+  --hd-bg: #0c1620;
+  --hd-sf: #122030;
+  --hd-sf2: #182a3c;
+  --hd-bd: #223244;
+  --hd-bd2: #1a2c3e;
+
+  --hd-t1: #e5ddd0;
+  --hd-t2: #8aa0b5;
+  --hd-t3: #50657a;
+
+  --hd-sb: #070f1a;
+  --hd-sb2: #040c14;
+  --hd-sbt: #7a9ab5;
+
+  --hd-terrd: rgba(214, 112, 82, 0.18);
+  --hd-mustd: rgba(240, 184, 87, 0.18);
+  --hd-okd: rgba(61, 138, 101, 0.18);
+  --hd-warnd: rgba(168, 116, 32, 0.18);
+  --hd-errd: rgba(184, 64, 64, 0.18);
+  --hd-infod: rgba(30, 111, 160, 0.16);
+
+  --hd-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  --hd-shadow-m: 0 6px 22px rgba(0, 0, 0, 0.5);
+}

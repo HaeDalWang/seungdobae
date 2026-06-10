@@ -1,0 +1,46 @@
+/**
+ * 전역 스타일 — 핸드오프 무드의 토대.
+ *
+ * 원칙: Cloudscape 내부 변수(해시 접미사라 버전 취약)는 건드리지 않는다.
+ * 전역 배경/본문 폰트만 body·#root에 직접 얹고,
+ * 커스텀 컴포넌트는 각자 --hd-* 토큰을 쓴다 (styles/tokens.css).
+ */
+
+@import "./tokens.css";
+
+:root {
+  color-scheme: light;
+}
+body.awsui-dark-mode {
+  color-scheme: dark;
+}
+
+/* 베이지 배경이 전체 무드의 핵심 — 순백/순흑 금지 (핸드오프 명세). */
+body {
+  background: var(--hd-bg);
+  font-family: var(--hd-fn);
+  transition: background 0.3s ease;
+}
+
+/* 커스텀 콘솔 영역 안에서만 적용되는 타이포 규칙.
+   Cloudscape 자체 컴포넌트의 헤딩은 건드리지 않는다. */
+.hd-serif {
+  font-family: var(--hd-fs);
+  letter-spacing: -0.4px;
+}
+.hd-mono {
+  font-family: var(--hd-fm);
+}
+
+/* 핸드오프 스크롤바 (얇은 베이지 톤). */
+.hd-scope ::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.hd-scope ::-webkit-scrollbar-track {
+  background: transparent;
+}
+.hd-scope ::-webkit-scrollbar-thumb {
+  background: var(--hd-bd);
+  border-radius: 2px;
+}

@@ -1,0 +1,617 @@
+/**
+ * 핸드오프 콘솔 프리미티브 스타일.
+ * 모든 색·간격은 styles/tokens.css 의 --hd-* 토큰을 참조 → 다크모드 자동 대응.
+ */
+
+/* 뷰 전체를 감싸는 베이지 스코프. AppLayout이 칠하는 배경을 덮는다. */
+.hd-scope {
+  background: var(--hd-bg);
+  min-height: 100%;
+  color: var(--hd-t1);
+  font-family: var(--hd-fn);
+  font-size: 13.5px;
+  line-height: 1.5;
+  padding: 22px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ─── 페이지 헤더 ─── */
+.hd-pghead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.hd-pgtitle {
+  font-family: var(--hd-fs);
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--hd-t1);
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+  margin: 0;
+}
+.hd-pgsub {
+  font-size: 12px;
+  color: var(--hd-t3);
+  margin-top: 3px;
+}
+
+/* ─── 메트릭 카드 ─── */
+.hd-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+@media (max-width: 900px) {
+  .hd-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .hd-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+.hd-mc {
+  background: var(--hd-sf);
+  border: 1px solid var(--hd-bd2);
+  border-radius: var(--hd-r-l);
+  padding: 15px 17px;
+  box-shadow: var(--hd-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  transition: box-shadow 0.15s ease, background 0.3s ease, border-color 0.3s ease;
+}
+.hd-mc:hover {
+  box-shadow: var(--hd-shadow-m);
+}
+.hd-mc-lbl {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--hd-t3);
+}
+.hd-mc-val {
+  font-family: var(--hd-fs);
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--hd-t1);
+  line-height: 1;
+}
+.hd-mc-val em {
+  font-size: 14px;
+  font-family: var(--hd-fn);
+  font-style: normal;
+  font-weight: 400;
+  color: var(--hd-t2);
+  margin-left: 3px;
+}
+.hd-mc-bar {
+  height: 3px;
+  border-radius: 2px;
+  margin-top: 2px;
+}
+
+/* ─── 콘솔 카드 (범용 컨테이너) ─── */
+.hd-card {
+  background: var(--hd-sf);
+  border: 1px solid var(--hd-bd2);
+  border-radius: var(--hd-r-l);
+  box-shadow: var(--hd-shadow);
+  overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.hd-card-h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 13px 17px 11px;
+  border-bottom: 1px solid var(--hd-bd2);
+}
+.hd-card-t {
+  font-family: var(--hd-fs);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--hd-t1);
+  margin: 0;
+}
+.hd-card-s {
+  font-size: 11px;
+  color: var(--hd-t3);
+  margin-top: 2px;
+}
+.hd-card-b {
+  padding: 14px 17px;
+}
+
+/* ─── 섹션 스택 ─── */
+.hd-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ─── 링크 (테라코타) ─── */
+.hd-link {
+  color: var(--hd-terr);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.12s ease;
+}
+.hd-link:hover {
+  color: var(--hd-terrl);
+  text-decoration: underline;
+}
+.hd-link:focus-visible {
+  outline: 2px solid var(--hd-terrl);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ─── 데이터 테이블 ─── */
+.hd-table-wrap {
+  overflow-x: auto;
+}
+.hd-dt {
+  width: 100%;
+  border-collapse: collapse;
+}
+.hd-dt th {
+  background: var(--hd-sf2);
+  padding: 0 13px;
+  height: 34px;
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--hd-t3);
+  border-bottom: 1px solid var(--hd-bd);
+  white-space: nowrap;
+}
+.hd-dt td {
+  padding: 0 13px;
+  height: 46px;
+  border-bottom: 1px solid var(--hd-bd2);
+  font-size: 13px;
+  white-space: nowrap;
+  color: var(--hd-t2);
+}
+.hd-dt tr:last-child td {
+  border-bottom: none;
+}
+.hd-dt tbody tr {
+  transition: background 0.08s ease;
+}
+.hd-dt tbody tr:hover td {
+  background: var(--hd-sf2);
+}
+.hd-dt .hd-mono {
+  font-family: var(--hd-fm);
+  font-size: 12px;
+}
+
+/* ─── 태그 (머스터드 칩) ─── */
+.hd-taglist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.hd-tag {
+  background: var(--hd-mustd);
+  border: 1px solid rgba(240, 184, 87, 0.25);
+  color: var(--hd-warn);
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* ─── 타임라인 (경력) ─── */
+.hd-tl-item {
+  position: relative;
+  padding-left: 22px;
+  border-left: 2px solid var(--hd-bd);
+}
+.hd-tl-item::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--hd-terr);
+  border: 2px solid var(--hd-sf);
+}
+.hd-tl-role {
+  font-family: var(--hd-fs);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--hd-t1);
+}
+.hd-tl-period {
+  font-size: 11.5px;
+  color: var(--hd-t3);
+  margin-top: 2px;
+}
+.hd-tl-list {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.hd-tl-list li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 13px;
+  color: var(--hd-t2);
+  line-height: 1.6;
+}
+.hd-tl-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--hd-terr);
+}
+
+/* ─── 언어 분포 (가로 막대) ─── */
+.hd-langbar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.hd-langbar-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+.hd-langbar-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--hd-t2);
+}
+.hd-langbar-track {
+  height: 8px;
+  background: var(--hd-sf2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.hd-langbar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* ─── 카드 헤더 우측 액션 (뷰 전환 토글 등) ─── */
+.hd-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* 세그먼트 토글 (막대 ↔ 원형). 핸드오프 Tweaks의 옵션 버튼 스타일. */
+.hd-seg {
+  display: inline-flex;
+  background: var(--hd-bg);
+  border: 1px solid var(--hd-bd);
+  border-radius: var(--hd-r);
+  padding: 2px;
+  gap: 2px;
+}
+.hd-seg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 24px;
+  border: none;
+  background: none;
+  border-radius: 4px;
+  color: var(--hd-t3);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.hd-seg-btn:hover {
+  color: var(--hd-t1);
+}
+.hd-seg-btn.on {
+  background: var(--hd-terr);
+  color: #fff;
+}
+.hd-seg-btn:focus-visible {
+  outline: 2px solid var(--hd-terrl);
+  outline-offset: 1px;
+}
+
+/* ─── 도넛 차트 (언어 분포 원형 뷰) ─── */
+.hd-donut {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.hd-donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 130px;
+}
+.hd-donut-li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--hd-t2);
+}
+.hd-donut-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.hd-donut-li b {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--hd-t1);
+  font-family: var(--hd-fm);
+  font-size: 12px;
+}
+.hd-donut-center {
+  font-family: var(--hd-fs);
+  fill: var(--hd-t1);
+}
+.hd-donut-center-sub {
+  font-family: var(--hd-fn);
+  fill: var(--hd-t3);
+}
+
+/* ─── KV (연락처) ─── */
+.hd-kv {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 24px;
+}
+@media (max-width: 600px) {
+  .hd-kv {
+    grid-template-columns: 1fr;
+  }
+}
+.hd-kv-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.hd-kv-k {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--hd-t3);
+}
+.hd-kv-v {
+  font-size: 13.5px;
+  color: var(--hd-t1);
+}
+
+/* ─── 자격증 카드 ─── */
+.hd-certgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+@media (max-width: 900px) {
+  .hd-certgrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .hd-certgrid {
+    grid-template-columns: 1fr;
+  }
+}
+.hd-cert {
+  background: var(--hd-sf);
+  border: 1px solid var(--hd-bd2);
+  border-radius: var(--hd-r-l);
+  box-shadow: var(--hd-shadow);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow 0.15s ease, background 0.3s ease, border-color 0.3s ease;
+}
+.hd-cert:hover {
+  box-shadow: var(--hd-shadow-m);
+}
+.hd-cert-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.hd-cert-img {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.hd-cert-name {
+  font-family: var(--hd-fs);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--hd-t1);
+  line-height: 1.3;
+}
+.hd-cert-meta {
+  font-size: 11.5px;
+  color: var(--hd-t3);
+}
+.hd-cert-foot {
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px solid var(--hd-bd2);
+}
+
+/* ─── 프로젝트 카드 ─── */
+.hd-projgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+@media (max-width: 760px) {
+  .hd-projgrid {
+    grid-template-columns: 1fr;
+  }
+}
+.hd-proj {
+  background: var(--hd-sf);
+  border: 1px solid var(--hd-bd2);
+  border-radius: var(--hd-r-l);
+  box-shadow: var(--hd-shadow);
+  padding: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow 0.15s ease, background 0.3s ease, border-color 0.3s ease;
+}
+.hd-proj:hover {
+  box-shadow: var(--hd-shadow-m);
+}
+.hd-proj-title {
+  font-family: var(--hd-fs);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--hd-t1);
+  line-height: 1.3;
+}
+.hd-proj-desc {
+  font-size: 13px;
+  color: var(--hd-t2);
+  line-height: 1.6;
+}
+.hd-proj-stack {
+  font-size: 11.5px;
+  color: var(--hd-t3);
+  font-family: var(--hd-fm);
+}
+.hd-proj-foot {
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--hd-bd2);
+}
+
+/* ─── 네이비 사이드바 (ConsoleNav) ─── */
+/* AppLayout navigation 슬롯(awsui_content-container)은 패딩이 0이므로
+   네비는 마진 없이 슬롯을 가득 채운다. */
+#hd-nav-host {
+  margin: 0;
+}
+.hd-nav {
+  background: var(--hd-sb);
+  color: var(--hd-sbt);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--hd-fn);
+  transition: background 0.3s ease;
+}
+
+/* 상단 로고 헤더 — Cloudscape 접기 버튼과 겹치지 않도록 공간을 확보하고
+   핸드오프 무드(해 마크 + 워드마크)를 재현한다. */
+.hd-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 14px 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.hd-nav-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--hd-terr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+.hd-nav-word {
+  font-family: var(--hd-fs);
+  font-size: 14px;
+  font-weight: 600;
+  color: #f0ebe1;
+  white-space: nowrap;
+}
+.hd-nav-sec {
+  padding: 16px 0 4px;
+}
+.hd-nav-lbl {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(184, 204, 224, 0.32);
+  padding: 0 14px 5px;
+}
+.hd-ni {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 14px;
+  color: var(--hd-sbt);
+  font-size: 13px;
+  position: relative;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.1s ease;
+}
+.hd-ni:hover {
+  background: var(--hd-sbh);
+}
+.hd-ni.on {
+  background: rgba(214, 112, 82, 0.17);
+  color: #eee8df;
+}
+.hd-ni.on::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  bottom: 5px;
+  width: 3px;
+  background: var(--hd-terr);
+  border-radius: 0 2px 2px 0;
+}
+.hd-ni:focus-visible {
+  outline: 2px solid var(--hd-terrl);
+  outline-offset: -2px;
+}
+.hd-ni-badge {
+  margin-left: auto;
+  background: var(--hd-terr);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 99px;
+  line-height: 1.5;
+}
