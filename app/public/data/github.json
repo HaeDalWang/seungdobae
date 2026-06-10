@@ -1,0 +1,66 @@
+{
+  "username": "octocat",
+  "repoCount": 6,
+  "starCount": 20347,
+  "languages": [
+    {
+      "name": "HTML",
+      "count": 1
+    },
+    {
+      "name": "CSS",
+      "count": 1
+    }
+  ],
+  "recentRepos": [
+    {
+      "name": "Spoon-Knife",
+      "description": "This repo is for demonstration purposes only.",
+      "stars": 13836,
+      "language": "HTML",
+      "url": "https://github.com/octocat/Spoon-Knife",
+      "updatedAt": "2026-06-09T05:45:10Z"
+    },
+    {
+      "name": "Hello-World",
+      "description": "My first repository on GitHub!",
+      "stars": 3615,
+      "language": null,
+      "url": "https://github.com/octocat/Hello-World",
+      "updatedAt": "2026-06-09T04:33:46Z"
+    },
+    {
+      "name": "git-consortium",
+      "description": "This repo is for demonstration purposes only.",
+      "stars": 577,
+      "language": null,
+      "url": "https://github.com/octocat/git-consortium",
+      "updatedAt": "2026-06-09T02:12:31Z"
+    },
+    {
+      "name": "hello-worId",
+      "description": "My first repository on GitHub.",
+      "stars": 751,
+      "language": null,
+      "url": "https://github.com/octocat/hello-worId",
+      "updatedAt": "2026-06-09T02:12:28Z"
+    },
+    {
+      "name": "test-repo1",
+      "description": "",
+      "stars": 456,
+      "language": null,
+      "url": "https://github.com/octocat/test-repo1",
+      "updatedAt": "2026-06-09T02:12:27Z"
+    },
+    {
+      "name": "octocat.github.io",
+      "description": "",
+      "stars": 1112,
+      "language": "CSS",
+      "url": "https://github.com/octocat/octocat.github.io",
+      "updatedAt": "2026-06-08T18:36:39Z"
+    }
+  ],
+  "fetchedAt": "2026-06-09T05:50:09.133Z"
+}

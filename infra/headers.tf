@@ -1,0 +1,51 @@
+# 보안 응답 헤더 정책. HSTS, nosniff, frame 차단, Referrer, 기본 CSP.
+resource "aws_cloudfront_response_headers_policy" "security" {
+  name = "seungdobae-security-headers"
+
+  security_headers_config {
+    strict_transport_security {
+      access_control_max_age_sec = 31536000
+      include_subdomains         = true
+      preload                    = true
+      override                   = true
+    }
+    content_type_options {
+      override = true
+    }
+    frame_options {
+      frame_option = "DENY"
+      override     = true
+    }
+    referrer_policy {
+      referrer_policy = "strict-origin-when-cross-origin"
+      override        = true
+    }
+  }
+
+  # custom_headers_config는 정책당 1개만 허용되므로 모든 커스텀 헤더를 한 블록에 둔다.
+  custom_headers_config {
+    items {
+      header   = "Permissions-Policy"
+      value    = "camera=(), microphone=(), geolocation=()"
+      override = true
+    }
+
+    # 정적 SPA용 CSP. Credly 배지 이미지·GitHub 아바타 등 외부 이미지를 허용한다.
+    items {
+      header   = "Content-Security-Policy"
+      override = true
+      value = join("; ", [
+        "default-src 'self'",
+        "script-src 'self'",
+        # Cloudscape는 런타임에 인라인 스타일을 주입하므로 style-src에 unsafe-inline 필요.
+        "style-src 'self' 'unsafe-inline'",
+        "img-src 'self' data: https://images.credly.com https://avatars.githubusercontent.com",
+        "font-src 'self' data:",
+        "connect-src 'self'",
+        "frame-ancestors 'none'",
+        "object-src 'none'",
+        "base-uri 'self'",
+      ])
+    }
+  }
+}

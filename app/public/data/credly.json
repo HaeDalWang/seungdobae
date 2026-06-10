@@ -1,0 +1,786 @@
+{
+  "badges": [
+    {
+      "id": "9340b36c-e3ac-45bb-89aa-9b2d916a1cf6",
+      "name": "Microsoft Certified Trainer (MCT) 2026",
+      "issuer": "Microsoft",
+      "skills": [
+        "Courseware Facilitation",
+        "Instructional Delivery",
+        "Microsoft Technologies"
+      ],
+      "imageUrl": "https://images.credly.com/images/b81c1cec-da9d-4587-976c-ad8562f85e95/blob",
+      "url": "https://www.credly.com/badges/9340b36c-e3ac-45bb-89aa-9b2d916a1cf6/public_url",
+      "issuedAt": "2026-05-28"
+    },
+    {
+      "id": "a495b5be-2386-451c-9226-9d7b6d3955c5",
+      "name": "FY26 GitHub Copilot SDK Enterprise Challenge Participant",
+      "issuer": "MCAPS Developer GTM Community",
+      "skills": [
+        "Agentic SDLC",
+        "AI Agents",
+        "Demonstrated skills",
+        "GitHub",
+        "GitHub Copilot SDK",
+        "Solution Development"
+      ],
+      "imageUrl": "https://images.credly.com/images/e8a964ad-0ed3-49dc-9b62-d1cf3deb66f8/blob",
+      "url": "https://www.credly.com/badges/a495b5be-2386-451c-9226-9d7b6d3955c5/public_url",
+      "issuedAt": "2026-04-07"
+    },
+    {
+      "id": "a8eee8fe-c92a-4633-9e22-8b2a972e050b",
+      "name": "EMEA Becoming Frontier Achiever Badge",
+      "issuer": "Microsoft Employee Learning",
+      "skills": [
+        "Artificial Intelligence (AI)",
+        "Learning And Development",
+        "Transformational Leadership"
+      ],
+      "imageUrl": "https://images.credly.com/images/64d590ad-f02b-4818-b9e4-ae333958b3fe/blob",
+      "url": "https://www.credly.com/badges/a8eee8fe-c92a-4633-9e22-8b2a972e050b/public_url",
+      "issuedAt": "2025-12-08"
+    },
+    {
+      "id": "e8d40c3e-2e4f-470e-8c21-be9f36d03575",
+      "name": "Microsoft Global Hackathon 2025",
+      "issuer": "The Microsoft Garage",
+      "skills": [
+        "Creativity",
+        "Experimentation",
+        "Growth Mindset",
+        "Hackathons",
+        "Hacking",
+        "Innovation",
+        "Lifelong Learner"
+      ],
+      "imageUrl": "https://images.credly.com/images/c5af23c8-2a73-44bf-bbad-3480da39808e/blob",
+      "url": "https://www.credly.com/badges/e8d40c3e-2e4f-470e-8c21-be9f36d03575/public_url",
+      "issuedAt": "2025-07-31"
+    },
+    {
+      "id": "fd26d185-330c-4281-8c56-3903b9bf15dc",
+      "name": "GPS AI Discovery Cards Workshop",
+      "issuer": "Microsoft Global Channel Partner Sales (GCPS)",
+      "skills": [
+        "AI Discovery Cards",
+        "GPS",
+        "virtual instructor led training"
+      ],
+      "imageUrl": "https://images.credly.com/images/5e4f1c3c-230b-4350-8100-df8892a1b4af/blob",
+      "url": "https://www.credly.com/badges/fd26d185-330c-4281-8c56-3903b9bf15dc/public_url",
+      "issuedAt": "2025-01-15"
+    },
+    {
+      "id": "b44c44eb-97e3-4ebc-865e-4087f742859a",
+      "name": "Microsoft Global Hackathon 2024",
+      "issuer": "The Microsoft Garage",
+      "skills": [
+        "Creativity",
+        "Experimentation",
+        "Growth Mindset",
+        "Hackathons",
+        "Hacking",
+        "Innovation",
+        "Lifelong Learner"
+      ],
+      "imageUrl": "https://images.credly.com/images/ac4d1eba-bbc1-42f9-aa64-d3149a99894a/image.png",
+      "url": "https://www.credly.com/badges/b44c44eb-97e3-4ebc-865e-4087f742859a/public_url",
+      "issuedAt": "2024-08-02"
+    },
+    {
+      "id": "60a346bc-7c46-4951-84f3-5454b742120d",
+      "name": "STEM Ambassador 50 hours of engagement 2023/2024",
+      "issuer": "STEM Learning",
+      "skills": [
+        "STEM Ambassador"
+      ],
+      "imageUrl": "https://images.credly.com/images/27c02bd8-59b3-4036-9143-9b77e9168c95/image.png",
+      "url": "https://www.credly.com/badges/60a346bc-7c46-4951-84f3-5454b742120d/public_url",
+      "issuedAt": "2024-07-31"
+    },
+    {
+      "id": "059c3f22-2186-4b37-bd0a-62ab922a6dd5",
+      "name": "Microsoft Change Agent Nonprofit Champion Badge",
+      "issuer": "Microsoft Global Employee Engagement",
+      "skills": [
+        "Digital Literacy",
+        "Digital Skills",
+        "Employee Giving",
+        "Microsoft",
+        "Nonprofit Community",
+        "Nonprofit Organizations (NPO)",
+        "Philanthropy",
+        "Technology",
+        "Volunteering"
+      ],
+      "imageUrl": "https://images.credly.com/images/a01c2847-bdf1-471b-93f3-6df0eba63b29/blob",
+      "url": "https://www.credly.com/badges/059c3f22-2186-4b37-bd0a-62ab922a6dd5/public_url",
+      "issuedAt": "2024-06-27"
+    },
+    {
+      "id": "4e7328cd-d32e-469c-97cd-a61d8f6d0eae",
+      "name": "GPS Partner Conversation Proficiency for AI",
+      "issuer": "Microsoft Customer Service and Support",
+      "skills": [
+        "AI Solutions & Resource Discovery",
+        "Confident AI Communication",
+        "Effective Partner Engagement"
+      ],
+      "imageUrl": "https://images.credly.com/images/c21bbf42-98a8-49f7-90c2-d90cfa33ddc1/image.png",
+      "url": "https://www.credly.com/badges/4e7328cd-d32e-469c-97cd-a61d8f6d0eae/public_url",
+      "issuedAt": "2024-06-06"
+    },
+    {
+      "id": "5b9dbed5-5fdb-462e-8f1a-3050dc04cc29",
+      "name": "Copilot for M365 Achiever Badge - Foundational",
+      "issuer": "Microsoft AI Business Solutions Enablement",
+      "skills": [
+        "AI",
+        "Copilot",
+        "Microsoft 365",
+        "Sales Fundamentals"
+      ],
+      "imageUrl": "https://images.credly.com/images/428e20f1-60eb-4a21-8658-aa92c03ed1c7/image.png",
+      "url": "https://www.credly.com/badges/5b9dbed5-5fdb-462e-8f1a-3050dc04cc29/public_url",
+      "issuedAt": "2024-01-02"
+    },
+    {
+      "id": "1fcf8c4f-8217-4323-a93e-cea8076f5102",
+      "name": "STEM Ambassador 15 hours of engagement 2023/2024",
+      "issuer": "STEM Learning",
+      "skills": [
+        "STEM Ambassador"
+      ],
+      "imageUrl": "https://images.credly.com/images/997dc801-ae2e-421a-8c08-37a7fcd36560/image.png",
+      "url": "https://www.credly.com/badges/1fcf8c4f-8217-4323-a93e-cea8076f5102/public_url",
+      "issuedAt": "2023-12-31"
+    },
+    {
+      "id": "98455eb9-caea-455f-9884-1641c1e56d16",
+      "name": "Learn contributor 2023Q3",
+      "issuer": "Microsoft Student Ambassadors",
+      "skills": [
+        "Accountability",
+        "Content Creation",
+        "Thought Leadership"
+      ],
+      "imageUrl": "https://images.credly.com/images/33e4467a-afaa-4135-9d4a-565e18e27001/image.png",
+      "url": "https://www.credly.com/badges/98455eb9-caea-455f-9884-1641c1e56d16/public_url",
+      "issuedAt": "2023-10-24"
+    },
+    {
+      "id": "f1cfa1e3-c020-4ed1-b8ef-33375b30ba9b",
+      "name": "STEM Ambassador 30 hours of engagement 2022/2023",
+      "issuer": "STEM Learning",
+      "skills": [
+        "STEM Ambassador"
+      ],
+      "imageUrl": "https://images.credly.com/images/a541a061-ff5c-4f6f-a903-bd8a5cafb4a2/image.png",
+      "url": "https://www.credly.com/badges/f1cfa1e3-c020-4ed1-b8ef-33375b30ba9b/public_url",
+      "issuedAt": "2023-07-31"
+    },
+    {
+      "id": "3a39e5ba-1e87-4e0c-b019-e658ab5b8a0a",
+      "name": "Microsoft Certified Trainer 2023-2024",
+      "issuer": "Microsoft",
+      "skills": [
+        "Information Technology Instructor",
+        "IT Training",
+        "MCT",
+        "Microsoft Certified Trainer",
+        "Microsoft Instructor",
+        "Microsoft Learning",
+        "Microsoft Technologies"
+      ],
+      "imageUrl": "https://images.credly.com/images/fd6bb2af-2f05-4d9b-a23e-39f8e309a82d/image.png",
+      "url": "https://www.credly.com/badges/3a39e5ba-1e87-4e0c-b019-e658ab5b8a0a/public_url",
+      "issuedAt": "2023-06-24"
+    },
+    {
+      "id": "d464e0ea-bb42-4503-98fa-0408192123f5",
+      "name": "STEM Ambassador 15 hours of engagement 2022/2023",
+      "issuer": "STEM Learning",
+      "skills": [
+        "STEM Ambassador"
+      ],
+      "imageUrl": "https://images.credly.com/images/0adfa9f1-86b5-4511-9248-896b050bed28/image.png",
+      "url": "https://www.credly.com/badges/d464e0ea-bb42-4503-98fa-0408192123f5/public_url",
+      "issuedAt": "2023-03-31"
+    },
+    {
+      "id": "f4da9aed-9ca0-4973-800f-d8bc4389512c",
+      "name": "Microsoft Certified: Dynamics 365 Fundamentals (CRM)",
+      "issuer": "Microsoft",
+      "skills": [
+        "Dynamics 365",
+        "Enterprise Software",
+        "Professional Services"
+      ],
+      "imageUrl": "https://images.credly.com/images/42992295-0ee2-4527-982d-e51efbec40fc/dynamics365-fundamentals-crm-600x600.png",
+      "url": "https://www.credly.com/badges/f4da9aed-9ca0-4973-800f-d8bc4389512c/public_url",
+      "issuedAt": "2023-02-24"
+    },
+    {
+      "id": "ebdcdb3d-6694-4efb-9555-75aebf07429a",
+      "name": "STEM Ambassador 15 hours of engagement 2021/2022",
+      "issuer": "STEM Learning",
+      "skills": [
+        "STEM Ambassador"
+      ],
+      "imageUrl": "https://images.credly.com/images/d2a02778-c483-47ea-a717-2be50f39b0db/STEM_Badges_2021-22_15_Hours_Engagement_202122.png",
+      "url": "https://www.credly.com/badges/ebdcdb3d-6694-4efb-9555-75aebf07429a/public_url",
+      "issuedAt": "2022-10-20"
+    },
+    {
+      "id": "b661cc22-bdfb-4111-9a20-7923da50f7f3",
+      "name": "Microsoft Certified Trainer 2022-2023",
+      "issuer": "Microsoft",
+      "skills": [
+        "Information Technology Instructor",
+        "IT Training",
+        "MCT",
+        "Microsoft Certified Trainer",
+        "Microsoft Instructor",
+        "Microsoft Learning",
+        "Microsoft Technologies"
+      ],
+      "imageUrl": "https://images.credly.com/images/bb4156e4-c2e1-4399-b03c-af6feb7a6cc4/image.png",
+      "url": "https://www.credly.com/badges/b661cc22-bdfb-4111-9a20-7923da50f7f3/public_url",
+      "issuedAt": "2022-06-24"
+    },
+    {
+      "id": "86ceb906-60bf-46de-b8de-1e3eba6900c6",
+      "name": "Social Responsibility Champ Silver",
+      "issuer": "Microsoft Customer Service and Support",
+      "skills": [
+        "Collaboration",
+        "Community",
+        "Technical"
+      ],
+      "imageUrl": "https://images.credly.com/images/1a00773b-a7b5-4995-b2ac-bf9939d2a50f/Social-Responsibility-Champ-Silver.png",
+      "url": "https://www.credly.com/badges/86ceb906-60bf-46de-b8de-1e3eba6900c6/public_url",
+      "issuedAt": "2022-04-30"
+    },
+    {
+      "id": "7fbe3fa9-2d16-4f8c-8179-30941e555faa",
+      "name": "Onboarding Buddy Gold",
+      "issuer": "Microsoft Customer Service and Support",
+      "skills": [
+        "Collaboration",
+        "Influencing",
+        "Knowledge Sharing",
+        "Leadership",
+        "Organizing",
+        "People Development",
+        "Technical Knowledge",
+        "Thought Leadership"
+      ],
+      "imageUrl": "https://images.credly.com/images/e9bba6ed-6850-4c95-bc14-77886a88efc9/Onboarding-Buddy-Gold.png",
+      "url": "https://www.credly.com/badges/7fbe3fa9-2d16-4f8c-8179-30941e555faa/public_url",
+      "issuedAt": "2022-04-09"
+    },
+    {
+      "id": "ad79b393-8182-4d79-9079-cd7befea62b0",
+      "name": "Microsoft Certified: Security, Compliance, and Identity Fundamentals",
+      "issuer": "Microsoft",
+      "skills": [
+        "Azure",
+        "Azure Active Directory",
+        "Cloud Security",
+        "Compliance",
+        "Compliance Management",
+        "Identity And Access Management",
+        "Information Protection And Governance",
+        "Microsoft 365",
+        "Microsoft Threat Protection",
+        "Security Management"
+      ],
+      "imageUrl": "https://images.credly.com/images/fc1352af-87fa-4947-ba54-398a0e63322e/security-compliance-and-identity-fundamentals-600x600.png",
+      "url": "https://www.credly.com/badges/ad79b393-8182-4d79-9079-cd7befea62b0/public_url",
+      "issuedAt": "2021-12-16"
+    },
+    {
+      "id": "d450c399-499c-4025-8630-e7637261ffee",
+      "name": "OpenHack: Security, Compliance, and Identity",
+      "issuer": "Microsoft OpenHack",
+      "skills": [
+        "Azure",
+        "Compliance",
+        "Identity",
+        "Security"
+      ],
+      "imageUrl": "https://images.credly.com/images/772811b6-ba72-4637-8104-a6a9ca08acc2/SCI_Challange_Complete_OpenHack_600X600.png",
+      "url": "https://www.credly.com/badges/d450c399-499c-4025-8630-e7637261ffee/public_url",
+      "issuedAt": "2021-10-07"
+    },
+    {
+      "id": "5c44167a-d5a5-478f-a93c-7491e13575a5",
+      "name": "Microsoft Certified: Azure Data Fundamentals",
+      "issuer": "Microsoft",
+      "skills": [
+        "Azure",
+        "Azure Cosmos DB",
+        "Azure Data Analyst",
+        "Azure Database Administrator",
+        "Azure Databricks",
+        "Azure Data Engineer",
+        "Azure Data Warehouse",
+        "Azure SQL Database",
+        "Azure SQL Data Warehouse",
+        "Azure Synapse Analytics",
+        "Cloud",
+        "Cloud Data",
+        "Cloud Data Services",
+        "Data Analytics",
+        "Data Processing",
+        "Data Visualization",
+        "MariaDB",
+        "MySQL",
+        "PostgreSQL",
+        "Power BI",
+        "SQL Server On Azure Virtual Machines",
+        "Virtualization"
+      ],
+      "imageUrl": "https://images.credly.com/images/70eb1e3f-d4de-4377-a062-b20fb29594ea/azure-data-fundamentals-600x600.png",
+      "url": "https://www.credly.com/badges/5c44167a-d5a5-478f-a93c-7491e13575a5/public_url",
+      "issuedAt": "2021-07-09"
+    },
+    {
+      "id": "ac52c7bb-b4de-45a5-ad89-b83b425e943b",
+      "name": "Microsoft Certified Trainer 2021-2022",
+      "issuer": "Microsoft",
+      "skills": [
+        "Information Technology Instructor",
+        "IT Training",
+        "MCT",
+        "Microsoft Certified Trainer",
+        "Microsoft Instructor",
+        "Microsoft Learning",
+        "Microsoft Technologies"
+      ],
+      "imageUrl": "https://images.credly.com/images/a6ea4416-4f34-4a85-bc24-eb3fe32fd241/MCT-Microsoft_Certified_Trainer-600x600.png",
+      "url": "https://www.credly.com/badges/ac52c7bb-b4de-45a5-ad89-b83b425e943b/public_url",
+      "issuedAt": "2021-06-24"
+    },
+    {
+      "id": "c2d31025-5500-4f08-a3c0-7e40e191da6c",
+      "name": "Microsoft 365 SMB Sales Specialist",
+      "issuer": "Microsoft 365 Partner Marketing, Microsoft",
+      "skills": [
+        "Channel",
+        "Microsoft 365",
+        "Modern Workplace",
+        "Office 365",
+        "Productivity",
+        "Resellers",
+        "Security",
+        "Small Business",
+        "SMB",
+        "Teamwork"
+      ],
+      "imageUrl": "https://images.credly.com/images/0b68ce47-b595-441b-9d84-cd249e64cb48/SMB_Sales_Specialist.png",
+      "url": "https://www.credly.com/badges/c2d31025-5500-4f08-a3c0-7e40e191da6c/public_url",
+      "issuedAt": "2021-03-10"
+    },
+    {
+      "id": "9dc66311-67f3-488a-a2c5-169a81650c40",
+      "name": "Microsoft Certified: Azure AI Fundamentals",
+      "issuer": "Microsoft",
+      "skills": [
+        "Azure Bot Services",
+        "Azure Machine Learning",
+        "Cognitive Services"
+      ],
+      "imageUrl": "https://images.credly.com/images/4136ced8-75d5-4afb-8677-40b6236e2672/azure-ai-fundamentals-600x600.png",
+      "url": "https://www.credly.com/badges/9dc66311-67f3-488a-a2c5-169a81650c40/public_url",
+      "issuedAt": "2021-02-15"
+    },
+    {
+      "id": "9af51fb7-4861-41d8-9810-3b243031d550",
+      "name": "MTA: Introduction to Programming Using Python - Certified 2021",
+      "issuer": "Microsoft",
+      "skills": [
+        "Python",
+        "Python Programming"
+      ],
+      "imageUrl": "https://images.credly.com/images/ebfba101-5b78-49b6-903a-ac9ad518fe8a/MTA-Introduction_to_Programming_Using_Python-600x600.png",
+      "url": "https://www.credly.com/badges/9af51fb7-4861-41d8-9810-3b243031d550/public_url",
+      "issuedAt": "2021-02-02"
+    },
+    {
+      "id": "74c498b2-217f-4350-bb01-40f84bfd80a5",
+      "name": "OpenHack: Migrating Microsoft Workloads to Azure",
+      "issuer": "Microsoft OpenHack",
+      "skills": [
+        "Azure Active Directory",
+        "Azure App Services",
+        "Azure IaaS",
+        "Azure Identity",
+        "Azure Key Vault",
+        "Azure Migrate",
+        "Azure Networking",
+        "Azure PaaS",
+        "Azure SQL Database",
+        "Azure Web Apps",
+        "Cloud Migration"
+      ],
+      "imageUrl": "https://images.credly.com/images/7e70c42c-13f5-422f-9c3b-e0219b9992ec/Migrating_Workloads_Azure.png",
+      "url": "https://www.credly.com/badges/74c498b2-217f-4350-bb01-40f84bfd80a5/public_url",
+      "issuedAt": "2020-10-22"
+    },
+    {
+      "id": "d0e86adb-180d-4dab-a91f-353d07ebf341",
+      "name": "Microsoft Certified Trainer 2020-2021",
+      "issuer": "Microsoft",
+      "skills": [
+        "Information Technology Instructor",
+        "IT Training",
+        "MCT",
+        "Microsoft Certified Trainer",
+        "Microsoft Instructor",
+        "Microsoft Learning",
+        "Microsoft Technologies"
+      ],
+      "imageUrl": "https://images.credly.com/images/c325c7c0-5fa6-4e59-be29-cd13c9417549/MCT-Microsoft_Certified_Trainer.png",
+      "url": "https://www.credly.com/badges/d0e86adb-180d-4dab-a91f-353d07ebf341/public_url",
+      "issuedAt": "2020-06-24"
+    },
+    {
+      "id": "22aeff94-e843-4cd9-a005-df8187ad7580",
+      "name": "Microsoft Certified: Dynamics 365 Fundamentals",
+      "issuer": "Microsoft",
+      "skills": [
+        "Cloud Concepts",
+        "Cloud Deployment",
+        "Cloud Security",
+        "Common Data Service",
+        "Dynamics 365 Integrations",
+        "Dynamics 365 Reporting",
+        "Dynamics 365 Security",
+        "Power Platform"
+      ],
+      "imageUrl": "https://images.credly.com/images/ff67d2c3-ad8f-4766-b795-fc34a8461c94/dynamics365-fundamentals-600x600.png",
+      "url": "https://www.credly.com/badges/22aeff94-e843-4cd9-a005-df8187ad7580/public_url",
+      "issuedAt": "2020-06-02"
+    },
+    {
+      "id": "6076da31-a9f1-405b-ba0d-59a36325833b",
+      "name": "Microsoft Certified: Power Platform Fundamentals",
+      "issuer": "Microsoft",
+      "skills": [
+        "Automation",
+        "Digital Data Collection",
+        "Power Apps",
+        "Power Automate",
+        "Power BI",
+        "Power Platform Business Value",
+        "Power Platform Core Components",
+        "Power Virtual Agents"
+      ],
+      "imageUrl": "https://images.credly.com/images/2a6251f2-737b-4bf6-9190-d77570cc76fc/CERT-Fundamentals-Power-Platform.png",
+      "url": "https://www.credly.com/badges/6076da31-a9f1-405b-ba0d-59a36325833b/public_url",
+      "issuedAt": "2020-03-20"
+    },
+    {
+      "id": "4ec638d9-7222-4c3c-a942-aadfe9a2c2a1",
+      "name": "Prosci® Certified Change Practitioner",
+      "issuer": "Prosci",
+      "skills": [
+        "Apply Prosci ADKAR Model",
+        "Apply Proven Change Techniques",
+        "Change Management Application",
+        "Leading Successful Organizational Change",
+        "Organizational Change Management",
+        "Planning Change"
+      ],
+      "imageUrl": "https://images.credly.com/images/b0c9d208-61ac-4c11-98b6-acbfcee72667/Change_Practitioner.png",
+      "url": "https://www.credly.com/badges/4ec638d9-7222-4c3c-a942-aadfe9a2c2a1/public_url",
+      "issuedAt": "2019-11-14"
+    },
+    {
+      "id": "7722422b-135b-41a1-b32c-b45ff9ee73d5",
+      "name": "Accessibility in Action",
+      "issuer": "Microsoft Accessibility",
+      "skills": [
+        "A11y",
+        "Accessibility",
+        "Disability",
+        "Disability Awareness",
+        "Diversity & Inclusion",
+        "Empower",
+        "Inclusion",
+        "Inclusive Design",
+        "Innovate",
+        "Web Accessibility"
+      ],
+      "imageUrl": "https://images.credly.com/images/d807abc0-9201-41a8-ad25-90ed4a69ee51/Acc_Badge_v4.png",
+      "url": "https://www.credly.com/badges/7722422b-135b-41a1-b32c-b45ff9ee73d5/public_url",
+      "issuedAt": "2019-10-21"
+    },
+    {
+      "id": "25454d44-dde1-4149-b13c-150ca56c5048",
+      "name": "Microsoft 365 Certified: Fundamentals",
+      "issuer": "Microsoft",
+      "skills": [
+        "Cloud Services",
+        "Compliance",
+        "Microsoft 365",
+        "Microsoft Cloud Services",
+        "Office 365",
+        "Security",
+        "Teamwork",
+        "Windows 10"
+      ],
+      "imageUrl": "https://images.credly.com/images/0c6d9839-f468-4adc-987d-5cfae4a9ee67/image.png",
+      "url": "https://www.credly.com/badges/25454d44-dde1-4149-b13c-150ca56c5048/public_url",
+      "issuedAt": "2019-02-06"
+    },
+    {
+      "id": "8fd1d616-2957-4587-8c5d-5e6f84bd2365",
+      "name": "Mentor Silver",
+      "issuer": "Microsoft Customer Service and Support",
+      "skills": [
+        "Collaboration",
+        "Influencing",
+        "Knowledge Sharing",
+        "Mentor",
+        "People Development",
+        "Teaching"
+      ],
+      "imageUrl": "https://images.credly.com/images/cbcf53ba-56df-44e7-93aa-493dad3cd5fd/Mentor-Silver.png",
+      "url": "https://www.credly.com/badges/8fd1d616-2957-4587-8c5d-5e6f84bd2365/public_url",
+      "issuedAt": "2019-01-09"
+    },
+    {
+      "id": "0dd25d7e-2469-4a21-962f-7f984d9fbde7",
+      "name": "Microsoft Certified: Azure Fundamentals",
+      "issuer": "Microsoft",
+      "skills": [
+        "Azure",
+        "Cloud Data",
+        "Cloud Networking",
+        "Cloud Security",
+        "Cloud Services",
+        "Cloud Storage",
+        "Virtualization"
+      ],
+      "imageUrl": "https://images.credly.com/images/be8fcaeb-c769-4858-b567-ffaaa73ce8cf/image.png",
+      "url": "https://www.credly.com/badges/0dd25d7e-2469-4a21-962f-7f984d9fbde7/public_url",
+      "issuedAt": "2019-01-03"
+    },
+    {
+      "id": "e0d59d28-5078-4a7d-ad14-1509fff752d2",
+      "name": "Event Speaker Silver",
+      "issuer": "Microsoft Customer Service and Support",
+      "skills": [
+        "Articulating",
+        "Influencing",
+        "Presentation",
+        "Public Speaking",
+        "Thought Leadership"
+      ],
+      "imageUrl": "https://images.credly.com/images/ab56fb18-ecc0-4cac-93ba-f52c31c784fe/Event-Speaker-Silver.png",
+      "url": "https://www.credly.com/badges/e0d59d28-5078-4a7d-ad14-1509fff752d2/public_url",
+      "issuedAt": "2018-05-02"
+    },
+    {
+      "id": "2474eee5-a436-4c7f-b79f-3a3faf0584e6",
+      "name": "Microsoft Global Challenger",
+      "issuer": "Microsoft Global Challenger, Microsoft",
+      "skills": [
+        "Account Management",
+        "Active Listening Skills",
+        "Commercial Insight",
+        "Communication Styles",
+        "Customer Engagement",
+        "Customer Intelligence",
+        "Deal Management",
+        "Effective Questioning Skills",
+        "Objection Handling",
+        "Opportunity Management",
+        "Persuasion",
+        "Pre-Call Planning",
+        "Social Selling",
+        "Stakeholder Management"
+      ],
+      "imageUrl": "https://images.credly.com/images/31c92815-edd9-4225-86ec-5ef209bc5245/Microsoft-Insight-Selling__284_29.png",
+      "url": "https://www.credly.com/badges/2474eee5-a436-4c7f-b79f-3a3faf0584e6/public_url",
+      "issuedAt": "2017-11-16"
+    },
+    {
+      "id": "c8c93008-fd71-4578-ac28-70079ec09381",
+      "name": "Exam 533: Implementing Microsoft Azure Infrastructure Solutions",
+      "issuer": "Microsoft",
+      "skills": [
+        "Azure Active Directory",
+        "Azure Virtual Machines",
+        "Cloud Services Implementation",
+        "Microsoft Azure",
+        "Virtual Network Management",
+        "Web Apps Implementation"
+      ],
+      "imageUrl": "https://images.credly.com/images/903f1857-34da-40a0-9316-d1e2b48cd34d/Microsoft_Exam533.png",
+      "url": "https://www.credly.com/badges/c8c93008-fd71-4578-ac28-70079ec09381/public_url",
+      "issuedAt": "2017-05-24"
+    },
+    {
+      "id": "2c31842c-c7df-42b0-8a31-10538227857a",
+      "name": "MCSE: Cloud Platform and Infrastructure — Certified 2017",
+      "issuer": "Microsoft",
+      "skills": [
+        "Azure",
+        "Cloud",
+        "Cloud Architecture",
+        "Cloud Developer",
+        "Cloud Infrastructure",
+        "Cloud Platform",
+        "Cloud Services",
+        "Cloud Technologies",
+        "Data Center",
+        "Identity Management",
+        "MCSA",
+        "MCSE",
+        "Systems Management",
+        "Virtualization"
+      ],
+      "imageUrl": "https://images.credly.com/images/442fedfe-8f34-4fcd-8dd2-9ffcaf980913/MCSE_Cloud_Platform_2017-01.png",
+      "url": "https://www.credly.com/badges/2c31842c-c7df-42b0-8a31-10538227857a/public_url",
+      "issuedAt": "2017-05-24"
+    },
+    {
+      "id": "fa71a2f5-e32a-4784-a449-b40e3197e20a",
+      "name": "MCSE: Cloud Platform and Infrastructure — Certified 2016",
+      "issuer": "Microsoft",
+      "skills": [
+        "Azure",
+        "Cloud",
+        "Cloud Architecture",
+        "Cloud Developer",
+        "Cloud Infrastructure",
+        "Cloud Platform",
+        "Cloud Services",
+        "Cloud Technologies",
+        "Data Center",
+        "Identity Management",
+        "MCSA",
+        "MCSE",
+        "Systems Management",
+        "Virtualization"
+      ],
+      "imageUrl": "https://images.credly.com/images/bcb1cbc7-7791-465d-8fe4-0848bc607360/MCSE_Cloud_Platform_and_Infrastructure-01.png",
+      "url": "https://www.credly.com/badges/fa71a2f5-e32a-4784-a449-b40e3197e20a/public_url",
+      "issuedAt": "2016-09-26"
+    },
+    {
+      "id": "cc1f528a-9ae0-4244-a637-5cb854a5fc43",
+      "name": "Exam 346: Managing Office 365 Identities and Requirements",
+      "issuer": "Microsoft",
+      "skills": [
+        "Azure AD",
+        "Azure Rights Management",
+        "Cloud Identities Management",
+        "Configure DNS",
+        "Office 365",
+        "Provision Tenants",
+        "SSO",
+        "Windows PowerShell"
+      ],
+      "imageUrl": "https://images.credly.com/images/68236c47-bc97-4db0-8843-135f3ec8da53/Managing_Office_365_Identities_and_Requirements-01.png",
+      "url": "https://www.credly.com/badges/cc1f528a-9ae0-4244-a637-5cb854a5fc43/public_url",
+      "issuedAt": "2014-12-06"
+    },
+    {
+      "id": "ab463a51-cc94-45bf-8c6f-1b3dad4f6e7e",
+      "name": "Exam 347: Enabling Office 365 Services",
+      "issuer": "Microsoft",
+      "skills": [
+        "Microsoft Exchange",
+        "Microsoft SharePoint",
+        "Office 365",
+        "Office 365 Deployment",
+        "Skype For Business"
+      ],
+      "imageUrl": "https://images.credly.com/images/3c0854c4-466c-4e77-92a3-50cc667634fb/Enabling_Office_365_Services-01.png",
+      "url": "https://www.credly.com/badges/ab463a51-cc94-45bf-8c6f-1b3dad4f6e7e/public_url",
+      "issuedAt": "2014-12-06"
+    },
+    {
+      "id": "b57c4d60-f4d1-4ef2-bb96-0aa40ae6555f",
+      "name": "MCSA: Office 365 - Certified 2016",
+      "issuer": "Microsoft",
+      "skills": [
+        "Active Directory",
+        "Azure AD",
+        "MCSA",
+        "Microsoft Exchange",
+        "Microsoft Office 365",
+        "Office 365",
+        "Office 365 Configuration",
+        "SharePoint",
+        "Skype For Business",
+        "Skype For Business Online"
+      ],
+      "imageUrl": "https://images.credly.com/images/83c02517-2555-4ff7-90b7-990d8e720cca/MCSA_Office_365-01.png",
+      "url": "https://www.credly.com/badges/b57c4d60-f4d1-4ef2-bb96-0aa40ae6555f/public_url",
+      "issuedAt": "2014-12-06"
+    },
+    {
+      "id": "5f2fc175-66b9-4a65-a605-a2df232d65cc",
+      "name": "Exam 417: Upgrading Your Skills to MCSA Windows Server 2012",
+      "issuer": "Microsoft",
+      "skills": [
+        "Active Directory Domain Services",
+        "Hyper-V",
+        "Server Configuration",
+        "Windows Server 12 R2"
+      ],
+      "imageUrl": "https://images.credly.com/images/28ae0288-5760-431e-a18b-2a5c309579a7/Exam-417.png",
+      "url": "https://www.credly.com/badges/5f2fc175-66b9-4a65-a605-a2df232d65cc/public_url",
+      "issuedAt": "2014-01-29"
+    },
+    {
+      "id": "f161956c-6e1e-4769-83d8-f3a0ce42a9a9",
+      "name": "MCSA: Windows Server 2012 - Certified 2016",
+      "issuer": "Microsoft",
+      "skills": [
+        "Active Directory",
+        "Hyper-V",
+        "MCSA",
+        "Network Administration",
+        "Network Administrator",
+        "Network Load Balancing",
+        "Network Specialist",
+        "RADIUS Servers",
+        "Windows Deployment Services",
+        "Windows Server",
+        "Windows Server 2012",
+        "Windows Server Virtualization"
+      ],
+      "imageUrl": "https://images.credly.com/images/835b37d1-09fb-42d5-9559-38abc7b4063d/MCSA_Windows_Server_2012-01.png",
+      "url": "https://www.credly.com/badges/f161956c-6e1e-4769-83d8-f3a0ce42a9a9/public_url",
+      "issuedAt": "2014-01-29"
+    },
+    {
+      "id": "63c0232e-64a1-40df-8e67-9bc1f70d5552",
+      "name": "Exam 246: Monitoring and Operating a Private Cloud with System Center 2012",
+      "issuer": "Microsoft",
+      "skills": [
+        "Configure Service Management",
+        "Data Center Process Automation",
+        "Microsoft SQL Server",
+        "Private Cloud",
+        "Resource Monitoring",
+        "Service Management",
+        "System Center 2012",
+        "Windows PowerShell",
+        "Windows Server"
+      ],
+      "imageUrl": "https://images.credly.com/images/7d1819ee-bf37-44c8-8ba4-dc7d33f5c912/Exam_246-01.png",
+      "url": "https://www.credly.com/badges/63c0232e-64a1-40df-8e67-9bc1f70d5552/public_url",
+      "issuedAt": "2013-01-26"
+    }
+  ],
+  "fetchedAt": "2026-06-09T05:50:28.876Z"
+}

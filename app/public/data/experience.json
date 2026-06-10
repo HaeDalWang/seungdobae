@@ -1,0 +1,23 @@
+[
+  {
+    "company": "샘플 클라우드 컴퍼니",
+    "role": "AWS MSP Engineer",
+    "startDate": "2023-03",
+    "endDate": null,
+    "highlights": [
+      "다계정 AWS 환경의 IaC를 Terraform으로 표준화하고 모듈화",
+      "CloudFront + S3 정적 호스팅 및 OIDC 기반 CI/CD 파이프라인 구축",
+      "고객사 인프라 모니터링/알림 체계를 운영하며 장애 대응 시간 단축"
+    ]
+  },
+  {
+    "company": "샘플 스타트업",
+    "role": "Cloud Engineer",
+    "startDate": "2021-01",
+    "endDate": "2023-02",
+    "highlights": [
+      "EC2/RDS 기반 워크로드를 컨테이너 환경으로 점진적 마이그레이션",
+      "Keycloak 기반 SSO 인증 인프라를 고가용성 구성으로 운영"
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "posts": [
+    {
+      "title": "S3 + CloudFront 정적 사이트에 OIDC로 키 없이 배포하기",
+      "url": "https://your-blog.example.com/posts/oidc-deploy",
+      "publishedAt": "2026-05-28T00:00:00Z"
+    },
+    {
+      "title": "Terraform으로 다계정 AWS 환경 표준화하기",
+      "url": "https://your-blog.example.com/posts/multi-account-terraform",
+      "publishedAt": "2026-04-12T00:00:00Z"
+    }
+  ],
+  "fetchedAt": "2026-06-09T00:00:00Z"
+}

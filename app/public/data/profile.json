@@ -1,0 +1,12 @@
+{
+  "name": "배승도",
+  "title": "AWS MSP Engineer",
+  "bio": "클라우드 인프라를 설계하고 운영하는 AWS MSP 엔지니어입니다. Terraform 기반 IaC, 가용성 높은 아키텍처, 그리고 자동화에 관심이 많습니다.",
+  "careerStartDate": "2021-01-01",
+  "contact": {
+    "email": "you@example.com",
+    "github": "https://github.com/your-username",
+    "linkedin": "https://www.linkedin.com/in/your-handle",
+    "location": "Seoul, South Korea"
+  }
+}

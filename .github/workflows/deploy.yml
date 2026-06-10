@@ -1,0 +1,78 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  # 주 1회 자동 갱신 (월요일 03:17 UTC). 외부 데이터를 다시 수집해 사이트를 자라게 한다.
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+
+# OIDC로 AWS 자격증명을 발급받기 위한 권한.
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+env:
+  AWS_REGION: ap-northeast-2
+  NODE_VERSION: "20"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm run test
+
+      # 외부 데이터 수집. 실패해도 스크립트가 기존 JSON을 보존하므로 빌드는 계속된다.
+      - name: Fetch GitHub data
+        env:
+          GITHUB_USERNAME: ${{ vars.GH_USERNAME }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run fetch:github -- "$GITHUB_USERNAME"
+
+      - name: Fetch Credly data
+        env:
+          CREDLY_USERNAME: ${{ vars.CREDLY_USERNAME }}
+        run: npm run fetch:credly -- "$CREDLY_USERNAME"
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Sync to S3
+        run: |
+          aws s3 sync dist/ "s3://${{ vars.SITE_BUCKET }}/" \
+            --delete \
+            --cache-control "public, max-age=300"
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --paths "/*"

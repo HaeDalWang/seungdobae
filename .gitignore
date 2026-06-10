@@ -1,0 +1,18 @@
+# === Terraform ===
+infra/.terraform/
+infra/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfplan
+# 변수 파일에는 도메인/레포 등 환경값이 들어가므로 커밋하지 않는다.
+*.tfvars
+!*.tfvars.example
+crash.log
+
+# === OS / editor ===
+.DS_Store
+.vscode/
+.idea/
+
+# === logs ===
+*.log

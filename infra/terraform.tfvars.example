@@ -1,0 +1,18 @@
+# 이 파일을 terraform.tfvars로 복사한 뒤 실제 값으로 채우세요.
+# terraform.tfvars 는 .gitignore로 커밋되지 않습니다.
+
+# 사이트 커스텀 도메인 (apex)
+domain_name = "example.com"
+
+# 추가 도메인 (예: www). 없으면 [] 로 둡니다.
+subject_alternative_names = ["www.example.com"]
+
+# Route53 호스팅 존을 새로 생성할지 여부.
+# 기존 존을 쓰려면 false 로 두고 이름으로 조회됩니다.
+create_route53_zone = true
+
+# OIDC 배포 권한을 부여할 GitHub 저장소 (owner/repo)
+github_repo = "your-username/seungdobae"
+
+# 계정에 GitHub OIDC provider가 이미 있으면 false 로 설정.
+github_oidc_create_provider = true
