@@ -45,16 +45,17 @@ jobs:
         run: npm run test
 
       # 외부 데이터 수집. 실패해도 스크립트가 기존 JSON을 보존하므로 빌드는 계속된다.
+      # 주의: GitHub Actions는 `GITHUB_` 접두사 env 설정을 금지하므로 비예약 이름을 쓴다.
       - name: Fetch GitHub data
         env:
-          GITHUB_USERNAME: ${{ vars.GH_USERNAME }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run fetch:github -- "$GITHUB_USERNAME"
+          SITE_GH_USERNAME: ${{ vars.GH_USERNAME }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run fetch:github -- "$SITE_GH_USERNAME"
 
       - name: Fetch Credly data
         env:
-          CREDLY_USERNAME: ${{ vars.CREDLY_USERNAME }}
-        run: npm run fetch:credly -- "$CREDLY_USERNAME"
+          SITE_CREDLY_USERNAME: ${{ vars.CREDLY_USERNAME }}
+        run: npm run fetch:credly -- "$SITE_CREDLY_USERNAME"
 
       - name: Build
         run: npm run build

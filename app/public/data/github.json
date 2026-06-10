@@ -1,66 +1,90 @@
 {
-  "username": "octocat",
-  "repoCount": 6,
-  "starCount": 20347,
+  "username": "HaeDalWang",
+  "repoCount": 49,
+  "starCount": 2,
   "languages": [
     {
-      "name": "HTML",
+      "name": "HCL",
+      "count": 14
+    },
+    {
+      "name": "Python",
+      "count": 12
+    },
+    {
+      "name": "Shell",
+      "count": 6
+    },
+    {
+      "name": "JavaScript",
+      "count": 3
+    },
+    {
+      "name": "Go",
+      "count": 2
+    },
+    {
+      "name": "TypeScript",
       "count": 1
     },
     {
-      "name": "CSS",
+      "name": "Mustache",
+      "count": 1
+    },
+    {
+      "name": "Jupyter Notebook",
       "count": 1
     }
   ],
   "recentRepos": [
     {
-      "name": "Spoon-Knife",
-      "description": "This repo is for demonstration purposes only.",
-      "stars": 13836,
-      "language": "HTML",
-      "url": "https://github.com/octocat/Spoon-Knife",
-      "updatedAt": "2026-06-09T05:45:10Z"
+      "name": "k8s-upgrade-skills",
+      "description": "collection of AI-driven automation skills and workflows for seamless Kubernetes cluster version upgrades.",
+      "stars": 1,
+      "language": "Python",
+      "url": "https://github.com/HaeDalWang/k8s-upgrade-skills",
+      "updatedAt": "2026-06-10T00:10:13Z"
     },
     {
-      "name": "Hello-World",
-      "description": "My first repository on GitHub!",
-      "stars": 3615,
-      "language": null,
-      "url": "https://github.com/octocat/Hello-World",
-      "updatedAt": "2026-06-09T04:33:46Z"
+      "name": "seungdobae",
+      "description": "나의 홈페이지",
+      "stars": 0,
+      "language": "TypeScript",
+      "url": "https://github.com/HaeDalWang/seungdobae",
+      "updatedAt": "2026-06-10T00:09:02Z"
     },
     {
-      "name": "git-consortium",
-      "description": "This repo is for demonstration purposes only.",
-      "stars": 577,
-      "language": null,
-      "url": "https://github.com/octocat/git-consortium",
-      "updatedAt": "2026-06-09T02:12:31Z"
+      "name": "keycloak-study-playground",
+      "description": "Keycloak을 공부하는겸 시나리오별 설정방법을 Terraform으로 미리 테스트 해논 치트시트",
+      "stars": 0,
+      "language": "Python",
+      "url": "https://github.com/HaeDalWang/keycloak-study-playground",
+      "updatedAt": "2026-06-09T00:08:54Z"
     },
     {
-      "name": "hello-worId",
-      "description": "My first repository on GitHub.",
-      "stars": 751,
-      "language": null,
-      "url": "https://github.com/octocat/hello-worId",
-      "updatedAt": "2026-06-09T02:12:28Z"
-    },
-    {
-      "name": "test-repo1",
+      "name": "jtbc-env",
       "description": "",
-      "stars": 456,
-      "language": null,
-      "url": "https://github.com/octocat/test-repo1",
-      "updatedAt": "2026-06-09T02:12:27Z"
+      "stars": 0,
+      "language": "HCL",
+      "url": "https://github.com/HaeDalWang/jtbc-env",
+      "updatedAt": "2026-06-01T07:34:47Z"
     },
     {
-      "name": "octocat.github.io",
+      "name": "KubeScout",
+      "description": "Zero-Config. Ultra-Lightweight. Drift-Aware.  A single binary/container that runs inside your Kubernetes cluster and immediately shows you how your installed Helm charts differ from their latest upstream versions.  No configuration files. No controllers. Just deploy and see the drift.",
+      "stars": 0,
+      "language": "Go",
+      "url": "https://github.com/HaeDalWang/KubeScout",
+      "updatedAt": "2026-06-01T06:10:17Z"
+    },
+    {
+      "name": "Quant-Agent",
       "description": "",
-      "stars": 1112,
-      "language": "CSS",
-      "url": "https://github.com/octocat/octocat.github.io",
-      "updatedAt": "2026-06-08T18:36:39Z"
+      "stars": 0,
+      "language": "Python",
+      "url": "https://github.com/HaeDalWang/Quant-Agent",
+      "updatedAt": "2026-05-29T11:45:18Z"
     }
   ],
-  "fetchedAt": "2026-06-09T05:50:09.133Z"
+  "fetchedAt": "2026-06-10T00:53:57.638Z"
 }

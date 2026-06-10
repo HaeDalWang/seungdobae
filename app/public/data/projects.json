@@ -1,14 +1,20 @@
 [
   {
-    "title": "Keycloak 고가용성 인프라",
-    "description": "PostgreSQL 복제 + keepalived(VIP) 기반으로 Keycloak SSO를 무중단 구성으로 운영. Docker Compose와 Terraform으로 재현 가능하게 구성.",
-    "stack": ["Keycloak", "PostgreSQL", "keepalived", "Docker", "Terraform"],
-    "url": "https://github.com/your-username/keycloak-ha"
+    "title": "eks-checklist 개발 PM",
+    "description": "EKS 클러스터를 General·Network·Scalability·Security·Stability·Cost 6개 방면에서 점검해 문제를 식별하고 해결 방안을 제공하는 사내 오퍼링 서비스. 5인 TF 팀의 PM으로 역할 분배, Terraform 환경·CI/CD 구성, 전 기능 검토 및 Runbook 검수를 담당.",
+    "stack": ["EKS", "Terraform", "CI/CD", "CLI", "Kubernetes"],
+    "url": "https://n.news.naver.com/article/008/0005212213"
   },
   {
-    "title": "정적 사이트 자동 배포 파이프라인",
-    "description": "S3 + CloudFront + OAC 정적 호스팅에 GitHub OIDC 인증으로 키 없이 배포. 외부 데이터를 빌드 시점에 수집해 콘텐츠를 자동 갱신.",
-    "stack": ["S3", "CloudFront", "GitHub Actions", "OIDC", "Terraform"],
-    "url": "https://github.com/your-username/seungdobae"
+    "title": "AWS EKS Service Delivery Program 취득",
+    "description": "파트너사가 AWS EKS 제공 역량을 실제 고객 사례로 검증받는 프로그램. 고객별 예시·가이드북·구성 문서를 전담 작성하고, 문서에 사용된 실제 AWS 서비스와 Kubernetes 객체·오픈소스를 직접 구축·구성.",
+    "stack": ["EKS", "Kubernetes", "AWS", "기술 문서"],
+    "url": "https://n.news.naver.com/article/008/0005209536?sid=101"
+  },
+  {
+    "title": "On-premise 쿠버네티스 구축 — 콘텐트리중앙",
+    "description": "온프레미스 환경에서 kubespray 기반 클러스터를 구축한 약 5개월 프로젝트. 첫 프로젝트로 DevOps 팀장을 보조하며 VM 초기 구성, kube-bench 기반 클러스터 하드닝, 화이트리스트 방화벽 정리, 운영팀 대상 3주 교육을 수행.",
+    "stack": ["Kubernetes", "kubespray", "Helmfile", "kube-bench", "On-premise"],
+    "url": "https://www.ddaily.co.kr/page/view/2023062216520189531"
   }
 ]

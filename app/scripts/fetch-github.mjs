@@ -2,7 +2,7 @@
 //
 // 사용법: node scripts/fetch-github.mjs <username>
 //   또는: GITHUB_USERNAME=<username> node scripts/fetch-github.mjs
-// 선택: GITHUB_TOKEN 환경변수가 있으면 rate limit 상향 (CI 내장 토큰 사용).
+// 선택: GH_TOKEN(CI) 또는 GITHUB_TOKEN(로컬) 환경변수가 있으면 rate limit 상향.
 //
 // 실패해도 빌드를 막지 않는다: 기존 github.json을 보존하고 경고만 남긴다.
 import { resolveUsername, writeJson, fetchJson, nowIso } from "./lib.mjs";
@@ -12,7 +12,8 @@ const PER_PAGE = 100;
 const TOP_LANGUAGES = 8;
 
 function authHeaders() {
-  const token = process.env.GITHUB_TOKEN;
+  // CI에서는 GH_TOKEN(워크플로가 주입), 로컬에서는 GITHUB_TOKEN을 모두 허용한다.
+  const token = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
   const headers = {
     Accept: "application/vnd.github+json",
     "User-Agent": "seungdobae-site-fetcher",
