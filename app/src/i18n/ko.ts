@@ -10,8 +10,7 @@ export const ko = {
     certifications: "자격증",
     activity: "활동",
     contact: "연락처",
-    sectionProfile: "프로필",
-    sectionMore: "더 보기",
+    sectionMain: "둘러보기",
   },
   app: {
     title: "배승도",
@@ -57,9 +56,6 @@ export const ko = {
     repoStars: "Star",
     repoLang: "주 언어",
     repoUpdated: "업데이트",
-    langViewToggle: "언어 분포 보기 방식",
-    langViewBar: "막대로 보기",
-    langViewDonut: "원형으로 보기",
   },
   contact: {
     title: "연락처",

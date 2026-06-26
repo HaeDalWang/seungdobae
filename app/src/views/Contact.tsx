@@ -1,14 +1,16 @@
-import type { ReactNode } from "react";
+import ContentLayout from "@cloudscape-design/components/content-layout";
+import Header from "@cloudscape-design/components/header";
+import Container from "@cloudscape-design/components/container";
+import KeyValuePairs from "@cloudscape-design/components/key-value-pairs";
+import Link from "@cloudscape-design/components/link";
 
 import { useStrings } from "../i18n";
 import { useProfile } from "../data/hooks";
-import ConsoleCard from "../components/ConsoleCard";
 import DataBoundary from "../components/DataBoundary";
-import "../styles/console.css";
 
 interface ContactPair {
   label: string;
-  value: ReactNode;
+  value: React.ReactNode;
 }
 
 export default function Contact() {
@@ -21,20 +23,16 @@ export default function Contact() {
   if (contact.email) {
     items.push({
       label: t.contact.email,
-      value: (
-        <a className="hd-link" href={`mailto:${contact.email}`}>
-          {contact.email}
-        </a>
-      ),
+      value: <Link href={`mailto:${contact.email}`}>{contact.email}</Link>,
     });
   }
   if (contact.github) {
     items.push({
       label: t.contact.github,
       value: (
-        <a className="hd-link" href={contact.github} target="_blank" rel="noreferrer">
+        <Link href={contact.github} external>
           {contact.github}
-        </a>
+        </Link>
       ),
     });
   }
@@ -42,9 +40,9 @@ export default function Contact() {
     items.push({
       label: t.contact.linkedin,
       value: (
-        <a className="hd-link" href={contact.linkedin} target="_blank" rel="noreferrer">
+        <Link href={contact.linkedin} external>
           {contact.linkedin}
-        </a>
+        </Link>
       ),
     });
   }
@@ -53,23 +51,12 @@ export default function Contact() {
   }
 
   return (
-    <div className="hd-scope">
-      <div className="hd-pghead">
-        <h1 className="hd-pgtitle">{t.contact.title}</h1>
-      </div>
-
-      <ConsoleCard>
+    <ContentLayout header={<Header variant="h1">{t.contact.title}</Header>}>
+      <Container>
         <DataBoundary loading={loading} error={error} isEmpty={items.length === 0}>
-          <div className="hd-kv">
-            {items.map((item) => (
-              <div className="hd-kv-row" key={item.label}>
-                <span className="hd-kv-k">{item.label}</span>
-                <span className="hd-kv-v">{item.value}</span>
-              </div>
-            ))}
-          </div>
+          <KeyValuePairs columns={2} items={items} />
         </DataBoundary>
-      </ConsoleCard>
-    </div>
+      </Container>
+    </ContentLayout>
   );
 }
