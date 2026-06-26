@@ -6,7 +6,7 @@
     "endDate": null,
     "highlights": [
       "ZenDesk 기반 AWS 기술·비용 문의 대응 — 2026년 4월 기준 누적 1,152건 처리, ECS·EKS·DevOps 티켓 에스컬레이션 전담",
-      "4개 고객사 11개 EKS 클러스터 상시 운영 — 모빌리티 핀테크사를 포함한 고객별 dev/staging/prod 환경을 Terraform IaC로 분리 관리하고 모니터링·24/7 On-Call 대응 (kubectl 컨텍스트 14개 운용)",
+      "2개 고객사 11개 EKS 클러스터 상시 운영 — 모빌리티 핀테크사(4환경)와 다수 서비스를 운영하는 고객사(7서비스)의 dev/staging/prod 환경을 Terraform IaC로 분리 관리하고 모니터링·24/7 On-Call 대응",
       "다수 고객사 EKS 버전 무중단 업그레이드 — 1.25→1.31, 1.33→1.35 등 연속 마이너 업그레이드를 애드온·오픈소스 동반 검증과 함께 수행하고, 업그레이드 플랜·리포트·런북을 표준화",
       "Keycloak 기반 SSO/IAM 구축 — LDAP federation·AD 연동·DB HA(repmgr) 설계 및 그룹웨어 SSO 연동, 고객 대상 기술 문서화·발표 진행",
       "이머전데이 AWS 핸즈온 세미나 강사 — General·Containers(EKS/ECS)·DevOps 주제 오프라인/온라인 강의 다수 진행"
