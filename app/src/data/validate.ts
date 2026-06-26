@@ -84,6 +84,10 @@ export function parseProjects(raw: unknown): ProjectItem[] {
       description: str(item.description),
       stack: strArray(item.stack),
       url: typeof item.url === "string" ? item.url : undefined,
+      featured: item.featured === true,
+      tagline: typeof item.tagline === "string" ? item.tagline : undefined,
+      badges: strArray(item.badges),
+      results: strArray(item.results),
     }))
     .filter((item) => item.title !== "");
 }
@@ -150,6 +154,17 @@ export function parseCredly(raw: unknown): CredlyData {
       .filter((x): x is CredlyBadge => x !== null),
     fetchedAt: str(raw.fetchedAt),
   };
+}
+
+/**
+ * 수동 자격증 파일(certifications.json)을 파싱한다.
+ * Credly 공개 API가 노출하지 않는 외부 발급("Other") 배지를 직접 채운다.
+ * Credly와 동일한 CredlyBadge 형태라 뷰에서 그대로 병합 가능하다.
+ */
+export function parseCertifications(raw: unknown): CredlyBadge[] {
+  return asArray(raw)
+    .map(parseBadge)
+    .filter((x): x is CredlyBadge => x !== null);
 }
 
 function parsePost(raw: unknown): BlogPost | null {

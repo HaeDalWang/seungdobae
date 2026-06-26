@@ -34,6 +34,8 @@ export const ko = {
     starUnit: "개",
     about: "소개",
     recentActivity: "최근 활동",
+    featuredWork: "대표 작업",
+    results: "측정 결과",
   },
   experience: {
     title: "경력",
@@ -43,6 +45,9 @@ export const ko = {
     title: "프로젝트",
     stack: "기술 스택",
     viewArticle: "관련 기사 보기",
+    viewRepo: "GitHub에서 보기",
+    featured: "대표 작업",
+    results: "측정 결과",
   },
   certifications: {
     title: "자격증",

@@ -1,5 +1,19 @@
 [
   {
+    "title": "k8s-upgrade-skills",
+    "featured": true,
+    "tagline": "EKS 업그레이드 운영 노하우를 AI Agent Skill로 시스템화 — 고위험·비가역 작업을 phase-gated로 안전하게.",
+    "description": "고위험·다단계·장기 체공 작업인 Kubernetes 버전 업그레이드를, 개인의 트러블슈팅 노하우를 AI Agent Skill로 명세화해 반자동 수행하는 오픈소스 도구. 단순 질의응답 → 컨텍스트 결합 → Skill 구조화의 3단계 진화를 거쳐 설계. 18개 사전 검증 규칙을 스크립트 게이트(LLM이 우회 불가)로 강제하고, 모든 수행을 audit.log로 추적해 신뢰성을 코드 레벨에서 확보. 고객 프로덕션 EKS 업그레이드에서 무중단으로 검증했고, 사내 전사 회의에서 모범 사례로 발표. Claude Code·Kiro·Cursor 등 8개 AI 도구를 지원.",
+    "stack": ["AI Agent Skill", "EKS", "Python", "Terraform", "Phase-gated"],
+    "badges": ["고객 prod 무중단 검증", "사내 전사 모범사례", "OSS 공개"],
+    "results": [
+      "EKS 클러스터 2기를 각 2회(마이너 +1단계)씩 총 4회 업그레이드 — 회당 18~28분, 아카이브·보고서·커밋 포함 총 약 1시간 40분",
+      "기존 수작업 기준 회당 수 시간 규모의 작업을 20분대로 단축 (사전 검증·실시간 모니터·사후 보고 자동화)",
+      "전 과정을 Claude Code + 자체 Skill만으로 수행, Pro Plan 세션 토큰 44% 사용 (Sonnet 4.6 1M · Thinking On)"
+    ],
+    "url": "https://github.com/HaeDalWang/k8s-upgrade-skills"
+  },
+  {
     "title": "eks-checklist 개발 PM",
     "description": "EKS 클러스터를 General·Network·Scalability·Security·Stability·Cost 6개 방면에서 점검해 문제를 식별하고 해결 방안을 제공하는 사내 오퍼링 서비스. 5인 TF 팀의 PM으로 역할 분배, Terraform 환경·CI/CD 구성, 전 기능 검토 및 Runbook 검수를 담당.",
     "stack": ["EKS", "Terraform", "CI/CD", "CLI", "Kubernetes"],

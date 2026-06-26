@@ -6,7 +6,7 @@ import Box from "@cloudscape-design/components/box";
 import SpaceBetween from "@cloudscape-design/components/space-between";
 
 import { useStrings } from "../i18n";
-import { useCredly } from "../data/hooks";
+import { useCredly, useCertifications } from "../data/hooks";
 import type { CredlyBadge } from "../data/types";
 import { formatDate } from "../lib/format";
 import DataBoundary from "../components/DataBoundary";
@@ -15,13 +15,20 @@ const BADGE_IMAGE_SIZE = 80;
 
 export default function Certifications() {
   const t = useStrings();
-  const { data, loading, error } = useCredly();
+  const credly = useCredly();
+  const manual = useCertifications();
+
+  const loading = credly.loading || manual.loading;
+  // Credly 자동 수집 + 수동(외부 발급) 병합 후 최신 취득순 정렬.
+  const badges = [...credly.data.badges, ...manual.data].sort((a, b) =>
+    a.issuedAt < b.issuedAt ? 1 : a.issuedAt > b.issuedAt ? -1 : 0
+  );
 
   return (
     <ContentLayout header={<Header variant="h1">{t.certifications.title}</Header>}>
-      <DataBoundary loading={loading} error={error} isEmpty={data.badges.length === 0}>
+      <DataBoundary loading={loading} error={credly.error} isEmpty={badges.length === 0}>
         <Cards<CredlyBadge>
-          items={data.badges}
+          items={badges}
           cardDefinition={{
             header: (badge) => (
               <SpaceBetween direction="horizontal" size="s" alignItems="center">

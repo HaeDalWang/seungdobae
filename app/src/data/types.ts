@@ -51,6 +51,14 @@ export interface ProjectItem {
   stack: string[];
   /** 외부 링크 (레포/데모 등). 없으면 생략. */
   url?: string;
+  /** 대표 작업 여부. true면 개요 스포트라이트 + 프로젝트 상단에 격상 노출. */
+  featured?: boolean;
+  /** 개요 스포트라이트용 한 줄 요약. featured 항목에만 사용. */
+  tagline?: string;
+  /** 검증 시그널 칩 (예: "고객 prod 무중단 검증", "사내 모범사례"). */
+  badges?: string[];
+  /** 측정된 성과 지표. featured 카드에 "측정 결과" 섹션으로 강조 노출. */
+  results?: string[];
 }
 
 /* ===== 자동 데이터 ===== */

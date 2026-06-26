@@ -9,6 +9,7 @@ import {
   parseProjects,
   parseGithub,
   parseCredly,
+  parseCertifications,
   parseBlog,
 } from "./validate";
 import {
@@ -17,6 +18,7 @@ import {
   type ProjectItem,
   type GithubData,
   type CredlyData,
+  type CredlyBadge,
   type BlogData,
   EMPTY_PROFILE,
   EMPTY_GITHUB,
@@ -44,6 +46,10 @@ export function useCredly(): DataState<CredlyData> {
   return useData("credly.json", parseCredly, EMPTY_CREDLY);
 }
 
+export function useCertifications(): DataState<CredlyBadge[]> {
+  return useData("certifications.json", parseCertifications, EMPTY_CERTIFICATIONS);
+}
+
 export function useBlog(): DataState<BlogData> {
   return useData("blog.json", parseBlog, EMPTY_BLOG);
 }
@@ -51,3 +57,4 @@ export function useBlog(): DataState<BlogData> {
 // 배열 fallback은 매 렌더 새 배열이 생기지 않도록 모듈 레벨에 고정한다.
 const EMPTY_EXPERIENCE: ExperienceItem[] = [];
 const EMPTY_PROJECTS: ProjectItem[] = [];
+const EMPTY_CERTIFICATIONS: CredlyBadge[] = [];

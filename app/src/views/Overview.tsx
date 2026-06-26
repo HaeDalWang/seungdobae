@@ -5,9 +5,10 @@ import Grid from "@cloudscape-design/components/grid";
 import Box from "@cloudscape-design/components/box";
 import SpaceBetween from "@cloudscape-design/components/space-between";
 import Link from "@cloudscape-design/components/link";
+import Badge from "@cloudscape-design/components/badge";
 
 import { useStrings } from "../i18n";
-import { useProfile, useGithub, useCredly } from "../data/hooks";
+import { useProfile, useGithub, useCredly, useCertifications, useProjects } from "../data/hooks";
 import { calcCareerYears } from "../lib/career";
 import { formatNumber, formatDate } from "../lib/format";
 import KpiWidget from "../components/KpiWidget";
@@ -18,9 +19,14 @@ export default function Overview() {
   const profile = useProfile();
   const github = useGithub();
   const credly = useCredly();
+  const certifications = useCertifications();
+  const projects = useProjects();
 
   const loading = profile.loading || github.loading || credly.loading;
   const careerYears = calcCareerYears(profile.data.careerStartDate);
+  const featured = projects.data.find((p) => p.featured);
+  // 자격증 수 = Credly 자동 수집 + 수동(외부 발급) 합산.
+  const certCount = credly.data.badges.length + certifications.data.length;
 
   // KPI 4종: 경력연차 · 누적 티켓 · 운영 클러스터 · 자격증
   // GitHub repo/star는 개발 지표라 헤드라인에서 제외, 운영 성과를 전면에 둔다.
@@ -37,7 +43,7 @@ export default function Overview() {
       unit: t.overview.clusterUnit,
     },
     {
-      value: formatNumber(credly.data.badges.length),
+      value: formatNumber(certCount),
       label: t.overview.certCount,
       unit: t.overview.certUnit,
     },
@@ -68,6 +74,58 @@ export default function Overview() {
             </Grid>
           </DataBoundary>
         </Container>
+
+        {featured ? (
+          <Container
+            header={
+              <Header
+                variant="h2"
+                description={featured.tagline}
+                actions={
+                  featured.url ? (
+                    <Link href={featured.url} external variant="primary">
+                      {t.projects.viewRepo}
+                    </Link>
+                  ) : undefined
+                }
+              >
+                ⭐ {t.overview.featuredWork} · {featured.title}
+              </Header>
+            }
+          >
+            <SpaceBetween size="m">
+              <Box variant="p">{featured.description}</Box>
+              {featured.badges && featured.badges.length > 0 ? (
+                <SpaceBetween size="xs" direction="horizontal">
+                  {featured.badges.map((badge) => (
+                    <Badge key={badge} color="green">
+                      {badge}
+                    </Badge>
+                  ))}
+                </SpaceBetween>
+              ) : null}
+              {featured.results && featured.results.length > 0 ? (
+                <div>
+                  <Box variant="awsui-key-label" margin={{ bottom: "xxs" }}>
+                    {t.overview.results}
+                  </Box>
+                  <ul style={{ margin: 0, paddingInlineStart: "1.1rem" }}>
+                    {featured.results.map((r) => (
+                      <li key={r}>
+                        <Box variant="span">{r}</Box>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+              {featured.stack.length > 0 ? (
+                <Box variant="small" color="text-body-secondary">
+                  {featured.stack.join(" · ")}
+                </Box>
+              ) : null}
+            </SpaceBetween>
+          </Container>
+        ) : null}
 
         <Container header={<Header variant="h2">{t.overview.about}</Header>}>
           <DataBoundary

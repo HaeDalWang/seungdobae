@@ -1,0 +1,21 @@
+[
+  {
+    "id": "databricks-genai-engineer-associate",
+    "name": "Databricks Certified Generative AI Engineer Associate",
+    "issuer": "Databricks Academy",
+    "skills": [
+      "Generative AI",
+      "Large Language Models (LLMs)",
+      "Retrieval Augmented Generation (RAG)",
+      "Vector Search",
+      "Model Serving",
+      "MLflow",
+      "Unity Catalog",
+      "Data Governance",
+      "Databricks"
+    ],
+    "imageUrl": "https://api.accredible.com/v1/credential/generate_baked_badge?credential_id=179491246",
+    "url": "https://credentials.databricks.com/a18428fa-12ef-4242-a4a3-9d253fc34924",
+    "issuedAt": "2026-04-10"
+  }
+]
