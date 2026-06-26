@@ -3,6 +3,10 @@
   "title": "AWS MSP Engineer",
   "bio": "여러 고객사의 EKS 클러스터를 동시에 운영하며, 무중단 버전 업그레이드를 플랜·리포트·런북으로 표준화해 온 AWS MSP 엔지니어입니다. Terraform 기반 IaC와 가용성 높은 아키텍처로 운영 부담을 줄이고, 반복되는 운영 작업을 자동화·문서화로 자산화하는 일에 집중합니다.",
   "careerStartDate": "2022-01-10",
+  "metrics": {
+    "tickets": 1152,
+    "clusters": 11
+  },
   "contact": {
     "email": "svvwac98@saltware.co.kr",
     "github": "https://github.com/HaeDalWang",

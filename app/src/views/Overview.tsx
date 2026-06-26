@@ -22,23 +22,24 @@ export default function Overview() {
   const loading = profile.loading || github.loading || credly.loading;
   const careerYears = calcCareerYears(profile.data.careerStartDate);
 
-  // KPI 4종: 경력연차 · 자격증 · 저장소 · Star
+  // KPI 4종: 경력연차 · 누적 티켓 · 운영 클러스터 · 자격증
+  // GitHub repo/star는 개발 지표라 헤드라인에서 제외, 운영 성과를 전면에 둔다.
   const kpis = [
     { value: String(careerYears), label: t.overview.careerYears, unit: t.overview.careerUnit },
+    {
+      value: formatNumber(profile.data.metrics.tickets),
+      label: t.overview.ticketCount,
+      unit: t.overview.ticketUnit,
+    },
+    {
+      value: formatNumber(profile.data.metrics.clusters),
+      label: t.overview.clusterCount,
+      unit: t.overview.clusterUnit,
+    },
     {
       value: formatNumber(credly.data.badges.length),
       label: t.overview.certCount,
       unit: t.overview.certUnit,
-    },
-    {
-      value: formatNumber(github.data.repoCount),
-      label: t.overview.repoCount,
-      unit: t.overview.repoUnit,
-    },
-    {
-      value: formatNumber(github.data.starCount),
-      label: t.overview.starCount,
-      unit: t.overview.starUnit,
     },
   ];
 

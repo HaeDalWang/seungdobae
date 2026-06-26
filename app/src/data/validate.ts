@@ -44,11 +44,16 @@ function asArray(v: unknown): unknown[] {
 export function parseProfile(raw: unknown): Profile {
   if (!isObject(raw)) return EMPTY_PROFILE;
   const contact = isObject(raw.contact) ? raw.contact : {};
+  const metrics = isObject(raw.metrics) ? raw.metrics : {};
   return {
     name: str(raw.name),
     title: str(raw.title),
     bio: str(raw.bio),
     careerStartDate: str(raw.careerStartDate),
+    metrics: {
+      tickets: num(metrics.tickets),
+      clusters: num(metrics.clusters),
+    },
     contact: {
       email: typeof contact.email === "string" ? contact.email : undefined,
       github: typeof contact.github === "string" ? contact.github : undefined,

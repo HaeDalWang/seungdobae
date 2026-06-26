@@ -16,12 +16,21 @@ export interface ContactInfo {
   location?: string;
 }
 
+/** 사람이 직접 입력하는 운영 성과 지표. 개요 KPI로 노출된다. */
+export interface ProfileMetrics {
+  /** 누적 처리한 기술 지원 티켓 수. */
+  tickets: number;
+  /** 상시 운영 중인 EKS 클러스터 수. */
+  clusters: number;
+}
+
 export interface Profile {
   name: string;
   title: string;
   bio: string;
   /** 경력 연차 자동 계산 기준일 (YYYY-MM-DD). */
   careerStartDate: string;
+  metrics: ProfileMetrics;
   contact: ContactInfo;
 }
 
@@ -108,6 +117,7 @@ export const EMPTY_PROFILE: Profile = {
   title: "",
   bio: "",
   careerStartDate: "",
+  metrics: { tickets: 0, clusters: 0 },
   contact: {},
 };
 
