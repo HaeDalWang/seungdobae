@@ -13,7 +13,8 @@
     "test:e2e": "playwright test",
     "fetch:github": "node scripts/fetch-github.mjs",
     "fetch:credly": "node scripts/fetch-credly.mjs",
-    "fetch:all": "node scripts/fetch-github.mjs && node scripts/fetch-credly.mjs"
+    "fetch:all": "node scripts/fetch-github.mjs && node scripts/fetch-credly.mjs",
+    "metrics:local": "node scripts/local-metrics.mjs"
   },
   "dependencies": {
     "@cloudscape-design/board-components": "^3",
