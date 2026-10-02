@@ -37,7 +37,7 @@ export default function Projects() {
                     ) : undefined
                   }
                 >
-                  ⭐ {t.projects.featured} · {featured.title}
+                  {t.projects.featured} · {featured.title}
                 </Header>
               }
             >

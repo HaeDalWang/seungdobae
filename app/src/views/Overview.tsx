@@ -89,7 +89,7 @@ export default function Overview() {
                   ) : undefined
                 }
               >
-                ⭐ {t.overview.featuredWork} · {featured.title}
+                {t.overview.featuredWork} · {featured.title}
               </Header>
             }
           >
