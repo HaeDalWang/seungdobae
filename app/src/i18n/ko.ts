@@ -54,7 +54,6 @@ export const ko = {
     starCount: "받은 Star",
     starUnit: "개",
     about: "소개",
-    recentActivity: "최근 활동",
     featuredWork: "대표 작업",
     results: "측정 결과",
   },

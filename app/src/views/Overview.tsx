@@ -8,9 +8,9 @@ import Link from "@cloudscape-design/components/link";
 import Badge from "@cloudscape-design/components/badge";
 
 import { useStrings } from "../i18n";
-import { useProfile, useGithub, useCredly, useCertifications, useProjects } from "../data/hooks";
+import { useProfile, useCredly, useCertifications, useProjects } from "../data/hooks";
 import { calcCareerYears } from "../lib/career";
-import { formatNumber, formatDate } from "../lib/format";
+import { formatNumber } from "../lib/format";
 import KpiWidget from "../components/KpiWidget";
 import ShareBarChart from "../components/ShareBarChart";
 import DataBoundary from "../components/DataBoundary";
@@ -18,12 +18,11 @@ import DataBoundary from "../components/DataBoundary";
 export default function Overview() {
   const t = useStrings();
   const profile = useProfile();
-  const github = useGithub();
   const credly = useCredly();
   const certifications = useCertifications();
   const projects = useProjects();
 
-  const loading = profile.loading || github.loading || credly.loading;
+  const loading = profile.loading || credly.loading;
   const careerYears = calcCareerYears(profile.data.careerStartDate);
   const featured = projects.data.find((p) => p.featured);
   // 자격증 수 = Credly 자동 수집 + 수동(외부 발급) 합산.
@@ -78,6 +77,16 @@ export default function Overview() {
       }
     >
       <SpaceBetween size="l">
+        <Container header={<Header variant="h2">{t.overview.about}</Header>}>
+          <DataBoundary
+            loading={profile.loading}
+            error={profile.error}
+            isEmpty={profile.data.bio === ""}
+          >
+            <Box variant="p">{profile.data.bio}</Box>
+          </DataBoundary>
+        </Container>
+
         <Container header={<Header variant="h2">{t.overview.title}</Header>}>
           <DataBoundary loading={loading} error={null}>
             <Grid
@@ -114,27 +123,6 @@ export default function Overview() {
               {iacKpis.map((kpi) => (
                 <KpiWidget key={kpi.label} value={kpi.value} label={kpi.label} unit={kpi.unit} />
               ))}
-            </Grid>
-          </Container>
-        ) : null}
-
-        {iac?.helm && iac.helm.length > 0 && iac.areas && iac.areas.length > 0 ? (
-          <Container
-            header={
-              <Header variant="h2" description={t.overview.techDescription}>
-                {t.overview.techTitle}
-              </Header>
-            }
-          >
-            <Grid gridDefinition={[{ colspan: { default: 12, m: 6 } }, { colspan: { default: 12, m: 6 } }]}>
-              <SpaceBetween size="xs">
-                <Box variant="h3">{t.overview.techHelm}</Box>
-                <ShareBarChart title={t.overview.techHelm} shares={iac.helm} label={t.overview.techShareLabel} />
-              </SpaceBetween>
-              <SpaceBetween size="xs">
-                <Box variant="h3">{t.overview.techAreas}</Box>
-                <ShareBarChart title={t.overview.techAreas} shares={iac.areas} label={t.overview.techShareLabel} />
-              </SpaceBetween>
             </Grid>
           </Container>
         ) : null}
@@ -218,36 +206,26 @@ export default function Overview() {
           </Container>
         ) : null}
 
-        <Container header={<Header variant="h2">{t.overview.about}</Header>}>
-          <DataBoundary
-            loading={profile.loading}
-            error={profile.error}
-            isEmpty={profile.data.bio === ""}
+        {iac?.helm && iac.helm.length > 0 && iac.areas && iac.areas.length > 0 ? (
+          <Container
+            header={
+              <Header variant="h2" description={t.overview.techDescription}>
+                {t.overview.techTitle}
+              </Header>
+            }
           >
-            <Box variant="p">{profile.data.bio}</Box>
-          </DataBoundary>
-        </Container>
-
-        <Container header={<Header variant="h2">{t.overview.recentActivity}</Header>}>
-          <DataBoundary
-            loading={github.loading}
-            error={github.error}
-            isEmpty={github.data.recentRepos.length === 0}
-          >
-            <SpaceBetween size="s">
-              {github.data.recentRepos.slice(0, 3).map((repo) => (
-                <div key={repo.name}>
-                  <Link href={repo.url} external>
-                    {repo.name}
-                  </Link>
-                  <Box variant="small" color="text-body-secondary">
-                    {repo.description} · {formatDate(repo.updatedAt)}
-                  </Box>
-                </div>
-              ))}
-            </SpaceBetween>
-          </DataBoundary>
-        </Container>
+            <Grid gridDefinition={[{ colspan: { default: 12, m: 6 } }, { colspan: { default: 12, m: 6 } }]}>
+              <SpaceBetween size="xs">
+                <Box variant="h3">{t.overview.techHelm}</Box>
+                <ShareBarChart title={t.overview.techHelm} shares={iac.helm} label={t.overview.techShareLabel} />
+              </SpaceBetween>
+              <SpaceBetween size="xs">
+                <Box variant="h3">{t.overview.techAreas}</Box>
+                <ShareBarChart title={t.overview.techAreas} shares={iac.areas} label={t.overview.techShareLabel} />
+              </SpaceBetween>
+            </Grid>
+          </Container>
+        ) : null}
       </SpaceBetween>
     </ContentLayout>
   );
