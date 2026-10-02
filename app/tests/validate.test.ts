@@ -113,6 +113,16 @@ describe("parseGithub", () => {
   });
 });
 
+describe("parseProfile iac", () => {
+  test("metrics.iac를 파싱하고 없으면 undefined로 둔다", () => {
+    const withIac = parseProfile({
+      metrics: { tickets: 1, clusters: 2, iac: { terraformLines: 10, resources: 5, modules: 3, helmReleases: 2 } },
+    });
+    expect(withIac.metrics.iac).toEqual({ terraformLines: 10, resources: 5, modules: 3, helmReleases: 2 });
+    expect(parseProfile({ metrics: { tickets: 1, clusters: 2 } }).metrics.iac).toBeUndefined();
+  });
+});
+
 describe("parseCredly", () => {
   test("배지를 정규화하고 name 없는 항목은 제외한다", () => {
     const data = parseCredly({

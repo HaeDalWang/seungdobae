@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 // @ts-expect-error .mjs 스크립트는 타입 선언이 없다
-import { countClusters, parseConf } from "../scripts/local-metrics.mjs";
+import { countClusters, parseConf, scanIac } from "../scripts/local-metrics.mjs";
 
 const cluster = (name: string, server: string) => ({ name, cluster: { server } });
 const ctx = (name: string, clusterName: string) => ({ name, context: { cluster: clusterName } });
@@ -34,5 +34,26 @@ describe("countClusters", () => {
 describe("parseConf", () => {
   test("주석·빈 줄을 건너뛰고 첫 '='로만 분리한다", () => {
     expect(parseConf("# c\n\nA=b=c\nD = e ")).toEqual({ A: "b=c", D: "e" });
+  });
+});
+
+describe("scanIac", () => {
+  test("tf 리소스·모듈·helm_release와 줄 수를 집계하고 .terraform은 건너뛴다", () => {
+    const root = "tests/fixtures/iac"; // vitest는 app/에서 실행된다
+    expect(scanIac(root)).toEqual({
+      terraformLines: 3,
+      resources: 2,
+      modules: 1,
+      helmReleases: 1,
+    });
+  });
+
+  test("디렉토리가 없으면 모두 0이다", () => {
+    expect(scanIac("/no/such/dir/for/iac/test")).toEqual({
+      terraformLines: 0,
+      resources: 0,
+      modules: 0,
+      helmReleases: 0,
+    });
   });
 });

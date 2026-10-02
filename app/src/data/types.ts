@@ -22,6 +22,15 @@ export interface ProfileMetrics {
   tickets: number;
   /** 상시 운영 중인 EKS 클러스터 수. */
   clusters: number;
+  /** 고객 환경 IaC 규모(로컬 집계). 없으면 표시하지 않는다. */
+  iac?: IacMetrics;
+}
+
+export interface IacMetrics {
+  terraformLines: number;
+  resources: number;
+  modules: number;
+  helmReleases: number;
 }
 
 export interface Profile {

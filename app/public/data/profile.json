@@ -5,7 +5,13 @@
   "careerStartDate": "2022-01-10",
   "metrics": {
     "tickets": 782,
-    "clusters": 15
+    "clusters": 15,
+    "iac": {
+      "terraformLines": 54185,
+      "resources": 1820,
+      "modules": 237,
+      "helmReleases": 163
+    }
   },
   "contact": {
     "email": "svvwac98@saltware.co.kr",

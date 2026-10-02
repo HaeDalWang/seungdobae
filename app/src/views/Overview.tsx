@@ -49,6 +49,16 @@ export default function Overview() {
     },
   ];
 
+  const iac = profile.data.metrics.iac;
+  const iacKpis = iac
+    ? [
+        { value: formatNumber(iac.terraformLines), label: t.overview.iacLines, unit: t.overview.iacLinesUnit },
+        { value: formatNumber(iac.resources), label: t.overview.iacResources, unit: t.overview.iacCountUnit },
+        { value: formatNumber(iac.modules), label: t.overview.iacModules, unit: t.overview.iacCountUnit },
+        { value: formatNumber(iac.helmReleases), label: t.overview.iacHelm, unit: t.overview.iacCountUnit },
+      ]
+    : [];
+
   return (
     <ContentLayout
       header={
@@ -74,6 +84,29 @@ export default function Overview() {
             </Grid>
           </DataBoundary>
         </Container>
+
+        {iacKpis.length > 0 ? (
+          <Container
+            header={
+              <Header variant="h2" description={t.overview.iacDescription}>
+                {t.overview.iacTitle}
+              </Header>
+            }
+          >
+            <Grid
+              gridDefinition={[
+                { colspan: { default: 6, xs: 3 } },
+                { colspan: { default: 6, xs: 3 } },
+                { colspan: { default: 6, xs: 3 } },
+                { colspan: { default: 6, xs: 3 } },
+              ]}
+            >
+              {iacKpis.map((kpi) => (
+                <KpiWidget key={kpi.label} value={kpi.value} label={kpi.label} unit={kpi.unit} />
+              ))}
+            </Grid>
+          </Container>
+        ) : null}
 
         {featured ? (
           <Container

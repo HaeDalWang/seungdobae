@@ -53,6 +53,14 @@ export function parseProfile(raw: unknown): Profile {
     metrics: {
       tickets: num(metrics.tickets),
       clusters: num(metrics.clusters),
+      iac: isObject(metrics.iac)
+        ? {
+            terraformLines: num(metrics.iac.terraformLines),
+            resources: num(metrics.iac.resources),
+            modules: num(metrics.iac.modules),
+            helmReleases: num(metrics.iac.helmReleases),
+          }
+        : undefined,
     },
     contact: {
       email: typeof contact.email === "string" ? contact.email : undefined,
