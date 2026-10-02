@@ -97,26 +97,25 @@ export default function Activity() {
           </Container>
         </Grid>
 
-        <Container header={<Header variant="h2">{t.activity.blog}</Header>}>
-          <DataBoundary
-            loading={blog.loading}
-            error={blog.error}
-            isEmpty={blog.data.posts.length === 0}
-          >
-            <SpaceBetween size="s">
-              {blog.data.posts.map((post) => (
-                <div key={post.url}>
-                  <Link href={post.url} external>
-                    {post.title}
-                  </Link>
-                  <Box variant="small" color="text-body-secondary">
-                    {formatDate(post.publishedAt)}
-                  </Box>
-                </div>
-              ))}
-            </SpaceBetween>
-          </DataBoundary>
-        </Container>
+        {/* 블로그 글이 있을 때만 섹션을 노출한다. 빈 위젯은 미완성 인상을 주므로 아예 그리지 않는다. */}
+        {blog.data.posts.length > 0 ? (
+          <Container header={<Header variant="h2">{t.activity.blog}</Header>}>
+            <DataBoundary loading={blog.loading} error={blog.error}>
+              <SpaceBetween size="s">
+                {blog.data.posts.map((post) => (
+                  <div key={post.url}>
+                    <Link href={post.url} external>
+                      {post.title}
+                    </Link>
+                    <Box variant="small" color="text-body-secondary">
+                      {formatDate(post.publishedAt)}
+                    </Box>
+                  </div>
+                ))}
+              </SpaceBetween>
+            </DataBoundary>
+          </Container>
+        ) : null}
       </SpaceBetween>
     </ContentLayout>
   );

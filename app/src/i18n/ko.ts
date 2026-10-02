@@ -20,6 +20,7 @@ export const ko = {
   },
   overview: {
     title: "개요",
+    summaryDescription: "티켓은 Zendesk assignee 기준 누적 처리 건수(ECS·EKS·DevOps 에스컬레이션 전담), 클러스터는 운영 중인 EKS를 서버 endpoint 기준 중복 제거해 집계",
     careerYears: "경력",
     careerUnit: "년차",
     ticketCount: "누적 처리 티켓 (Zendesk)",
@@ -29,7 +30,7 @@ export const ko = {
     certCount: "보유 자격증",
     certUnit: "개",
     iacTitle: "관리 인프라 코드",
-    iacDescription: "고객 환경 Terraform·Helm 코드 기준 (정의 개수, 환경별 복제 포함)",
+    iacDescription: "고객 환경 Terraform·Helm 코드 기준 — .tf 파일의 코드 줄 수(주석·공백 포함)와 정의 개수, 환경별(dev/staging/prod) 복제분 각각 집계",
     iacLines: "Terraform 코드",
     iacLinesUnit: "줄",
     iacResources: "리소스 정의",

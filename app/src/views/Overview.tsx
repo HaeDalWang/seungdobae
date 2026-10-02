@@ -87,7 +87,13 @@ export default function Overview() {
           </DataBoundary>
         </Container>
 
-        <Container header={<Header variant="h2">{t.overview.title}</Header>}>
+        <Container
+          header={
+            <Header variant="h2" description={t.overview.summaryDescription}>
+              {t.overview.title}
+            </Header>
+          }
+        >
           <DataBoundary loading={loading} error={null}>
             <Grid
               gridDefinition={[
