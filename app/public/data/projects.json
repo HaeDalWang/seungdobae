@@ -24,6 +24,19 @@
     "url": "https://github.com/HaeDalWang/k8s-upgrade-skills"
   },
   {
+    "title": "poc-env — 고객 이슈 재현 PoC 저장소",
+    "description": "고객 티켓의 난제를 문서나 추측으로 답하지 않고, 실제에 가까운 환경을 Terraform으로 재현해 가능·조건부 가능·불가능·미확인으로 판정하고 증거와 함께 회신하기 위한 PoC 저장소. 공통 EKS 기반 위에 Envoy Gateway·GitLab 자체호스팅·LiteLLM·Keycloak 등 스택을 독립 state로 올려 배포·삭제하며, 검증 당시 버전을 고정하고 모든 사례를 history/에 누적해 재사용 가능한 EKS 문제 해결 사례집으로 키우는 중. 고객 식별 정보는 저장하지 않는다.",
+    "stack": [
+      "Terraform",
+      "EKS",
+      "Envoy Gateway",
+      "GitLab",
+      "LiteLLM",
+      "Keycloak"
+    ],
+    "url": "https://github.com/HaeDalWang/poc-env"
+  },
+  {
     "title": "사내 AI 티켓 대응 워크스페이스 설계·유지보수 (비공개)",
     "description": "MSP 티켓 대응 노하우를 Claude Code·Codex·Kiro 등 여러 AI 도구에서 공통으로 쓰는 워크스페이스로 표준화해 직접 유지보수 중인 사내 프로젝트. 온보딩 자동화, 정식 태그 릴리스와 자동 업데이트, 사용 지표 수집기(Lambda·DynamoDB — 고객 내용은 클라이언트와 수집기에서 이중으로 차단), 평가(eval) 체계, 정책 카드 기반 지식 순환 구조를 설계·구현. 최근 3개월간 119 커밋.",
     "stack": [
