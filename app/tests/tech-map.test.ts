@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 // @ts-expect-error .mjs 스크립트는 타입 선언이 없다
-import { helmProduct, resourceArea, topWithOther } from "../scripts/tech-map.mjs";
+import { helmProduct, mergeByProduct, resourceArea, topWithOther } from "../scripts/tech-map.mjs";
 
 describe("helmProduct", () => {
   test("같은 제품의 여러 차트를 한 제품으로 합친다", () => {
@@ -11,6 +11,21 @@ describe("helmProduct", () => {
 
   test("매핑에 없는 차트는 이름을 노출하지 않고 기타로 둔다", () => {
     expect(helmProduct("some-customer-private-chart")).toBe("기타");
+  });
+});
+
+describe("mergeByProduct", () => {
+  test("한 제품의 보조 차트는 더하지 않고 가장 많은 차트 수를 설치 횟수로 본다", () => {
+    const merged = mergeByProduct(
+      new Map([["istiod", 5], ["base", 5], ["ztunnel", 1], ["cni", 1], ["karpenter", 6], ["karpenter-crd", 6]])
+    );
+    expect(merged.get("Istio")).toBe(5);
+    expect(merged.get("Karpenter")).toBe(6);
+  });
+
+  test("매핑에 없는 차트는 각각 설치이므로 기타에 합산한다", () => {
+    const merged = mergeByProduct(new Map([["unknown-a", 2], ["unknown-b", 3]]));
+    expect(merged.get("기타")).toBe(5);
   });
 });
 

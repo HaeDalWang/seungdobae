@@ -63,6 +63,21 @@ export function helmProduct(chart) {
   return HELM_PRODUCTS[chart] ?? OTHER;
 }
 
+/**
+ * 차트별 릴리스 수(Map<chart,count>) → 제품별 설치 횟수(Map<product,count>).
+ * 한 번 설치에 여러 차트가 따라오는 제품(예: Istio base+istiod, Karpenter+CRD)이 부풀려지지 않도록
+ * 같은 제품의 차트 중 가장 많은 수를 설치 횟수로 본다. 매핑에 없는 차트는 각각 별개 설치라 합산한다.
+ */
+export function mergeByProduct(chartCounts) {
+  const merged = new Map();
+  for (const [chart, count] of chartCounts) {
+    const product = helmProduct(chart);
+    const prev = merged.get(product) ?? 0;
+    merged.set(product, product === OTHER ? prev + count : Math.max(prev, count));
+  }
+  return merged;
+}
+
 /** aws_<service>_* 접두사 → 표시 영역. 그 외 provider는 접두사로 판단한다. */
 const AWS_AREAS = {
   iam: "IAM",

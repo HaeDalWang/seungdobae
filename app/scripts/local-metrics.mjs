@@ -12,7 +12,7 @@ import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { dataDir, fetchJson } from "./lib.mjs";
-import { helmProduct, resourceArea, topWithOther } from "./tech-map.mjs";
+import { mergeByProduct, resourceArea, topWithOther } from "./tech-map.mjs";
 
 const ZENDESK_CONF = resolve(homedir(), ".config/saltware/zendesk.conf");
 /** 운영 대상이 아닌 context/서버 (PoC·로컬). 고객 식별자는 넣지 않는다. */
@@ -46,7 +46,7 @@ const NEXT_BLOCK = /\n(?:resource|module|data|locals|variable|output|provider)\s
  */
 export function scanIac(root) {
   const total = { terraformLines: 0, resources: 0, modules: 0, helmReleases: 0 };
-  const helm = new Map();
+  const charts = new Map();
   const areas = new Map();
   const bump = (map, key) => map.set(key, (map.get(key) ?? 0) + 1);
   const walk = (dir) => {
@@ -71,13 +71,13 @@ export function scanIac(root) {
           const rest = text.slice(m.index + m[0].length);
           const end = rest.search(NEXT_BLOCK);
           const chart = /^\s*chart\s*=\s*"([^"]+)"/m.exec(end < 0 ? rest : rest.slice(0, end))?.[1] ?? "";
-          bump(helm, helmProduct(chart));
+          bump(charts, chart);
         }
       }
     }
   };
   walk(root);
-  return { ...total, helm: topWithOther(helm, HELM_TOP), areas: topWithOther(areas, AREA_TOP) };
+  return { ...total, helm: topWithOther(mergeByProduct(charts), HELM_TOP), areas: topWithOther(areas, AREA_TOP) };
 }
 
 /** KEY=VALUE 형식 conf 파싱. read_conf(zendesk_weekly.py)와 같은 규칙. */
