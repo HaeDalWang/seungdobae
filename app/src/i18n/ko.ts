@@ -20,6 +20,7 @@ export const ko = {
   },
   overview: {
     title: "개요",
+    summaryDescription: "티켓은 Zendesk assignee 기준 누적 처리 건수(ECS·EKS·DevOps 에스컬레이션 전담), 클러스터는 운영 중인 EKS를 서버 endpoint 기준 중복 제거해 집계",
     careerYears: "경력",
     careerUnit: "년차",
     ticketCount: "누적 처리 티켓 (Zendesk)",
@@ -28,8 +29,10 @@ export const ko = {
     clusterUnit: "개",
     certCount: "보유 자격증",
     certUnit: "개",
+    certListTitle: "보유 자격증",
+    certListDescription: "제3자 발급 기관에서 직접 확인할 수 있는 자격증입니다. 상세·배지는 자격증 탭 참고.",
     iacTitle: "관리 인프라 코드",
-    iacDescription: "고객 환경 Terraform·Helm 코드 기준 (정의 개수, 환경별 복제 포함)",
+    iacDescription: "고객 환경 Terraform·Helm 코드 기준 — .tf 파일의 코드 줄 수(주석·공백 포함)와 정의 개수, 환경별(dev/staging/prod) 복제분 각각 집계",
     iacLines: "Terraform 코드",
     iacLinesUnit: "줄",
     iacResources: "리소스 정의",
@@ -60,6 +63,10 @@ export const ko = {
     about: "소개",
     featuredWork: "대표 작업",
     results: "측정 결과",
+    trustTitle: "지표는 어떻게 집계하나",
+    trustBody:
+      "모든 운영 숫자는 로컬 환경에서 자동 집계합니다. 고객 식별 정보·티켓 내용·클러스터 context 이름은 수집 단계에서 전부 제외하고 숫자만 남깁니다 — 고객 데이터는 어떤 형태로도 이 사이트에 저장되지 않습니다. 원본을 공개할 수 없는 대신, 집계 로직 자체를 공개합니다.",
+    trustLinkLabel: "집계 스크립트 보기",
   },
   experience: {
     title: "경력",

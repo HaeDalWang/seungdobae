@@ -17,6 +17,10 @@ import DetailToggle from "../components/DetailToggle";
 import { summarizeLectures } from "../lib/lectures";
 import DataBoundary from "../components/DataBoundary";
 
+// 집계 로직 공개 위치. 숫자의 산출 방식을 면접관이 직접 검증할 수 있도록 소스를 가리킨다.
+const METRICS_SCRIPT_URL =
+  "https://github.com/HaeDalWang/seungdobae/blob/main/app/scripts/local-metrics.mjs";
+
 export default function Overview() {
   const t = useStrings();
   const profile = useProfile();
@@ -29,6 +33,11 @@ export default function Overview() {
   const featured = projects.data.find((p) => p.featured);
   // 자격증 수 = Credly 자동 수집 + 수동(외부 발급) 합산.
   const certCount = credly.data.badges.length + certifications.data.length;
+  // 자격증 이름 목록. "4개"라는 숫자보다 제3자(Credly 등)가 검증 가능한 이름이 신뢰를 준다.
+  const certNames = [
+    ...credly.data.badges.map((b) => b.name),
+    ...certifications.data.map((c) => c.name),
+  ];
 
   // KPI 4종: 경력연차 · 누적 티켓 · 운영 클러스터 · 자격증
   // GitHub repo/star는 개발 지표라 헤드라인에서 제외, 운영 성과를 전면에 둔다.
@@ -94,7 +103,13 @@ export default function Overview() {
           </DataBoundary>
         </Container>
 
-        <Container header={<Header variant="h2">{t.overview.title}</Header>}>
+        <Container
+          header={
+            <Header variant="h2" description={t.overview.summaryDescription}>
+              {t.overview.title}
+            </Header>
+          }
+        >
           <DataBoundary loading={loading} error={null}>
             <SpaceBetween size="s">
               <Grid
@@ -125,6 +140,33 @@ export default function Overview() {
             </SpaceBetween>
           </DataBoundary>
         </Container>
+
+        <Container header={<Header variant="h2">{t.overview.trustTitle}</Header>}>
+          <SpaceBetween size="s">
+            <Box variant="p">{t.overview.trustBody}</Box>
+            <Link href={METRICS_SCRIPT_URL} external variant="primary">
+              {t.overview.trustLinkLabel}
+            </Link>
+          </SpaceBetween>
+        </Container>
+
+        {certNames.length > 0 ? (
+          <Container
+            header={
+              <Header variant="h2" description={t.overview.certListDescription}>
+                {t.overview.certListTitle}
+              </Header>
+            }
+          >
+            <SpaceBetween size="xs" direction="horizontal">
+              {certNames.map((name) => (
+                <Badge key={name} color="blue">
+                  {name}
+                </Badge>
+              ))}
+            </SpaceBetween>
+          </Container>
+        ) : null}
 
         {iacKpis.length > 0 ? (
           <Container

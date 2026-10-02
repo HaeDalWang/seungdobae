@@ -10,6 +10,7 @@ import SpaceBetween from "@cloudscape-design/components/space-between";
 import { useStrings } from "../i18n";
 import { useProjects } from "../data/hooks";
 import type { ProjectItem } from "../data/types";
+import { isGithubUrl } from "../lib/link";
 import DataBoundary from "../components/DataBoundary";
 
 export default function Projects() {
@@ -94,7 +95,7 @@ export default function Projects() {
                   content: (item) =>
                     item.url ? (
                       <Link href={item.url} external>
-                        {t.projects.viewArticle}
+                        {isGithubUrl(item.url) ? t.projects.viewRepo : t.projects.viewArticle}
                       </Link>
                     ) : null,
                 },
