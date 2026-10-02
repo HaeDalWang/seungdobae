@@ -11,6 +11,12 @@
       "resources": 1820,
       "modules": 237,
       "helmReleases": 163
+    },
+    "lectures": {
+      "total": 13,
+      "lead": 9,
+      "assist": 4,
+      "since": "2024-04"
     }
   },
   "contact": {

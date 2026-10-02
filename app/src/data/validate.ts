@@ -61,6 +61,14 @@ export function parseProfile(raw: unknown): Profile {
             helmReleases: num(metrics.iac.helmReleases),
           }
         : undefined,
+      lectures: isObject(metrics.lectures)
+        ? {
+            total: num(metrics.lectures.total),
+            lead: num(metrics.lectures.lead),
+            assist: num(metrics.lectures.assist),
+            since: str(metrics.lectures.since),
+          }
+        : undefined,
     },
     contact: {
       email: typeof contact.email === "string" ? contact.email : undefined,

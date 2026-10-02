@@ -123,6 +123,16 @@ describe("parseProfile iac", () => {
   });
 });
 
+describe("parseProfile lectures", () => {
+  test("metrics.lectures를 파싱하고 없으면 undefined로 둔다", () => {
+    const withLectures = parseProfile({
+      metrics: { tickets: 1, clusters: 2, lectures: { total: 13, lead: 9, assist: 4, since: "2024-04" } },
+    });
+    expect(withLectures.metrics.lectures).toEqual({ total: 13, lead: 9, assist: 4, since: "2024-04" });
+    expect(parseProfile({ metrics: { tickets: 1, clusters: 2 } }).metrics.lectures).toBeUndefined();
+  });
+});
+
 describe("parseCredly", () => {
   test("배지를 정규화하고 name 없는 항목은 제외한다", () => {
     const data = parseCredly({

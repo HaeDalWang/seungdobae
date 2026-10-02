@@ -59,6 +59,15 @@ export default function Overview() {
       ]
     : [];
 
+  const lectures = profile.data.metrics.lectures;
+  const lectureKpis = lectures
+    ? [
+        { value: formatNumber(lectures.total), label: t.overview.lecturesTotal, unit: t.overview.lecturesUnit },
+        { value: formatNumber(lectures.lead), label: t.overview.lecturesLead, unit: t.overview.lecturesUnit },
+        { value: formatNumber(lectures.assist), label: t.overview.lecturesAssist, unit: t.overview.lecturesUnit },
+      ]
+    : [];
+
   return (
     <ContentLayout
       header={
@@ -105,6 +114,33 @@ export default function Overview() {
                 <KpiWidget key={kpi.label} value={kpi.value} label={kpi.label} unit={kpi.unit} />
               ))}
             </Grid>
+          </Container>
+        ) : null}
+
+        {lectureKpis.length > 0 ? (
+          <Container
+            header={
+              <Header variant="h2" description={t.overview.lecturesDescription}>
+                {t.overview.lecturesTitle}
+              </Header>
+            }
+          >
+            <SpaceBetween size="m">
+              <Grid
+                gridDefinition={[
+                  { colspan: { default: 4, xs: 3 } },
+                  { colspan: { default: 4, xs: 3 } },
+                  { colspan: { default: 4, xs: 3 } },
+                ]}
+              >
+                {lectureKpis.map((kpi) => (
+                  <KpiWidget key={kpi.label} value={kpi.value} label={kpi.label} unit={kpi.unit} />
+                ))}
+              </Grid>
+              <Box variant="small" color="text-body-secondary">
+                {t.overview.lecturesSince} · {t.overview.lecturesTopics}
+              </Box>
+            </SpaceBetween>
           </Container>
         ) : null}
 

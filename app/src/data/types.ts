@@ -24,6 +24,18 @@ export interface ProfileMetrics {
   clusters: number;
   /** 고객 환경 IaC 규모(로컬 집계). 없으면 표시하지 않는다. */
   iac?: IacMetrics;
+  /** 세미나·강의 이력. 없으면 표시하지 않는다. */
+  lectures?: LectureMetrics;
+}
+
+export interface LectureMetrics {
+  total: number;
+  /** 주강사 횟수. */
+  lead: number;
+  /** 보조 강사 횟수. */
+  assist: number;
+  /** 시작 시점 (YYYY-MM). */
+  since: string;
 }
 
 export interface IacMetrics {
