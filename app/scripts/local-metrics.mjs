@@ -12,6 +12,7 @@ import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { dataDir, fetchJson } from "./lib.mjs";
+import { helmProduct, resourceArea, topWithOther } from "./tech-map.mjs";
 
 const ZENDESK_CONF = resolve(homedir(), ".config/saltware/zendesk.conf");
 /** 운영 대상이 아닌 context/서버 (PoC·로컬). 고객 식별자는 넣지 않는다. */
@@ -33,14 +34,21 @@ export function countClusters(kubeConfig) {
 
 const IAC_ROOT = resolve(homedir(), "salt");
 const IAC_SKIP_DIRS = new Set([".git", ".terraform", ".terragrunt-cache", "node_modules"]);
-const EMPTY_IAC = { terraformLines: 0, resources: 0, modules: 0, helmReleases: 0 };
+const HELM_TOP = 20;
+const AREA_TOP = 15;
+/** 다음 최상위 블록 시작 전까지를 한 블록으로 본다. */
+const NEXT_BLOCK = /\n(?:resource|module|data|locals|variable|output|provider)\s/;
 
 /**
  * root 아래 Terraform 코드 규모를 숫자로만 집계한다. 파일명·리소스명·내용은 남기지 않는다.
  * "정의" 개수다 (환경별로 복제된 코드는 각각 센다). 없는 디렉토리는 0.
+ * helm/areas는 tech-map으로 정리한 공개 제품·서비스 이름과 개수만 담는다 (모르는 이름은 "기타").
  */
 export function scanIac(root) {
-  const total = { ...EMPTY_IAC };
+  const total = { terraformLines: 0, resources: 0, modules: 0, helmReleases: 0 };
+  const helm = new Map();
+  const areas = new Map();
+  const bump = (map, key) => map.set(key, (map.get(key) ?? 0) + 1);
   const walk = (dir) => {
     let entries;
     try {
@@ -54,14 +62,22 @@ export function scanIac(root) {
       } else if (e.name.endsWith(".tf")) {
         const text = readFileSync(join(dir, e.name), "utf8");
         total.terraformLines += text.split("\n").length - (text.endsWith("\n") ? 1 : 0);
-        total.resources += (text.match(/^\s*resource\s+"/gm) ?? []).length;
         total.modules += (text.match(/^\s*module\s+"/gm) ?? []).length;
-        total.helmReleases += (text.match(/^\s*resource\s+"helm_release"/gm) ?? []).length;
+        for (const m of text.matchAll(/^\s*resource\s+"([a-z0-9_]+)"/gm)) {
+          total.resources += 1;
+          bump(areas, resourceArea(m[1]));
+          if (m[1] !== "helm_release") continue;
+          total.helmReleases += 1;
+          const rest = text.slice(m.index + m[0].length);
+          const end = rest.search(NEXT_BLOCK);
+          const chart = /^\s*chart\s*=\s*"([^"]+)"/m.exec(end < 0 ? rest : rest.slice(0, end))?.[1] ?? "";
+          bump(helm, helmProduct(chart));
+        }
       }
     }
   };
   walk(root);
-  return total;
+  return { ...total, helm: topWithOther(helm, HELM_TOP), areas: topWithOther(areas, AREA_TOP) };
 }
 
 /** KEY=VALUE 형식 conf 파싱. read_conf(zendesk_weekly.py)와 같은 규칙. */

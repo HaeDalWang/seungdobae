@@ -15,6 +15,7 @@ import {
   type CredlyBadge,
   type BlogData,
   type BlogPost,
+  type TechShare,
   EMPTY_PROFILE,
   EMPTY_GITHUB,
   EMPTY_CREDLY,
@@ -41,6 +42,14 @@ function asArray(v: unknown): unknown[] {
 
 /* ===== 수동 데이터 ===== */
 
+/** [{name, count}] 배열을 검증한다. name이 없거나 count가 숫자가 아닌 항목은 버린다. */
+function parseShares(raw: unknown): TechShare[] {
+  return asArray(raw)
+    .filter(isObject)
+    .map((item) => ({ name: str(item.name), count: num(item.count) }))
+    .filter((item) => item.name !== "" && item.count > 0);
+}
+
 export function parseProfile(raw: unknown): Profile {
   if (!isObject(raw)) return EMPTY_PROFILE;
   const contact = isObject(raw.contact) ? raw.contact : {};
@@ -59,6 +68,8 @@ export function parseProfile(raw: unknown): Profile {
             resources: num(metrics.iac.resources),
             modules: num(metrics.iac.modules),
             helmReleases: num(metrics.iac.helmReleases),
+            helm: parseShares(metrics.iac.helm),
+            areas: parseShares(metrics.iac.areas),
           }
         : undefined,
       lectures: isObject(metrics.lectures)

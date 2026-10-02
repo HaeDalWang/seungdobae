@@ -118,8 +118,23 @@ describe("parseProfile iac", () => {
     const withIac = parseProfile({
       metrics: { tickets: 1, clusters: 2, iac: { terraformLines: 10, resources: 5, modules: 3, helmReleases: 2 } },
     });
-    expect(withIac.metrics.iac).toEqual({ terraformLines: 10, resources: 5, modules: 3, helmReleases: 2 });
+    expect(withIac.metrics.iac).toEqual({ terraformLines: 10, resources: 5, modules: 3, helmReleases: 2, helm: [], areas: [] });
     expect(parseProfile({ metrics: { tickets: 1, clusters: 2 } }).metrics.iac).toBeUndefined();
+  });
+});
+
+describe("parseProfile iac 분포", () => {
+  test("helm·areas를 {name,count}로 파싱하고 잘못된 항목은 버린다", () => {
+    const p = parseProfile({
+      metrics: {
+        iac: {
+          helm: [{ name: "Istio", count: 12 }, { count: 3 }, "bad"],
+          areas: [{ name: "IAM", count: 197 }],
+        },
+      },
+    });
+    expect(p.metrics.iac?.helm).toEqual([{ name: "Istio", count: 12 }]);
+    expect(p.metrics.iac?.areas).toEqual([{ name: "IAM", count: 197 }]);
   });
 });
 

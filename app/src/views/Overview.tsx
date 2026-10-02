@@ -12,6 +12,7 @@ import { useProfile, useGithub, useCredly, useCertifications, useProjects } from
 import { calcCareerYears } from "../lib/career";
 import { formatNumber, formatDate } from "../lib/format";
 import KpiWidget from "../components/KpiWidget";
+import ShareBarChart from "../components/ShareBarChart";
 import DataBoundary from "../components/DataBoundary";
 
 export default function Overview() {
@@ -113,6 +114,27 @@ export default function Overview() {
               {iacKpis.map((kpi) => (
                 <KpiWidget key={kpi.label} value={kpi.value} label={kpi.label} unit={kpi.unit} />
               ))}
+            </Grid>
+          </Container>
+        ) : null}
+
+        {iac?.helm && iac.helm.length > 0 && iac.areas && iac.areas.length > 0 ? (
+          <Container
+            header={
+              <Header variant="h2" description={t.overview.techDescription}>
+                {t.overview.techTitle}
+              </Header>
+            }
+          >
+            <Grid gridDefinition={[{ colspan: { default: 12, m: 6 } }, { colspan: { default: 12, m: 6 } }]}>
+              <SpaceBetween size="xs">
+                <Box variant="h3">{t.overview.techHelm}</Box>
+                <ShareBarChart title={t.overview.techHelm} shares={iac.helm} label={t.overview.techShareLabel} />
+              </SpaceBetween>
+              <SpaceBetween size="xs">
+                <Box variant="h3">{t.overview.techAreas}</Box>
+                <ShareBarChart title={t.overview.techAreas} shares={iac.areas} label={t.overview.techShareLabel} />
+              </SpaceBetween>
             </Grid>
           </Container>
         ) : null}

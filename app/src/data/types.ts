@@ -43,6 +43,15 @@ export interface IacMetrics {
   resources: number;
   modules: number;
   helmReleases: number;
+  /** Helm 릴리스의 오픈소스 제품별 개수 (상위 + 기타). */
+  helm?: TechShare[];
+  /** Terraform 리소스의 영역별 개수 (상위 + 기타). */
+  areas?: TechShare[];
+}
+
+export interface TechShare {
+  name: string;
+  count: number;
 }
 
 export interface Profile {

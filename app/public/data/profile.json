@@ -10,7 +10,159 @@
       "terraformLines": 54185,
       "resources": 1820,
       "modules": 237,
-      "helmReleases": 163
+      "helmReleases": 163,
+      "helm": [
+        {
+          "name": "Prometheus",
+          "count": 14
+        },
+        {
+          "name": "Istio",
+          "count": 12
+        },
+        {
+          "name": "Karpenter",
+          "count": 12
+        },
+        {
+          "name": "Secrets Store CSI Driver",
+          "count": 10
+        },
+        {
+          "name": "Thanos",
+          "count": 10
+        },
+        {
+          "name": "AWS Load Balancer Controller",
+          "count": 8
+        },
+        {
+          "name": "ExternalDNS",
+          "count": 8
+        },
+        {
+          "name": "Metrics Server",
+          "count": 8
+        },
+        {
+          "name": "Argo CD",
+          "count": 5
+        },
+        {
+          "name": "k8tz",
+          "count": 5
+        },
+        {
+          "name": "Kiali",
+          "count": 5
+        },
+        {
+          "name": "Kubernetes Event Exporter",
+          "count": 5
+        },
+        {
+          "name": "Elastic (ECK)",
+          "count": 4
+        },
+        {
+          "name": "Fluent Bit",
+          "count": 4
+        },
+        {
+          "name": "Jaeger",
+          "count": 4
+        },
+        {
+          "name": "Kubecost",
+          "count": 4
+        },
+        {
+          "name": "Reloader",
+          "count": 4
+        },
+        {
+          "name": "SnapScheduler",
+          "count": 4
+        },
+        {
+          "name": "ingress-nginx",
+          "count": 3
+        },
+        {
+          "name": "Keycloak",
+          "count": 3
+        },
+        {
+          "name": "기타",
+          "count": 31
+        }
+      ],
+      "areas": [
+        {
+          "name": "Kubernetes",
+          "count": 354
+        },
+        {
+          "name": "IAM",
+          "count": 197
+        },
+        {
+          "name": "S3",
+          "count": 180
+        },
+        {
+          "name": "Helm",
+          "count": 163
+        },
+        {
+          "name": "네트워크(VPC)",
+          "count": 153
+        },
+        {
+          "name": "API Gateway",
+          "count": 121
+        },
+        {
+          "name": "ACM",
+          "count": 73
+        },
+        {
+          "name": "Keycloak",
+          "count": 71
+        },
+        {
+          "name": "ELB",
+          "count": 62
+        },
+        {
+          "name": "Route 53",
+          "count": 61
+        },
+        {
+          "name": "Elastic Stack",
+          "count": 59
+        },
+        {
+          "name": "SNS·SQS",
+          "count": 49
+        },
+        {
+          "name": "EC2",
+          "count": 46
+        },
+        {
+          "name": "Lambda",
+          "count": 28
+        },
+        {
+          "name": "CloudWatch",
+          "count": 25
+        },
+        {
+          "name": "기타",
+          "count": 178
+        }
+      ]
     },
     "lectures": {
       "total": 13,

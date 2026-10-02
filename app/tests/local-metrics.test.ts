@@ -41,10 +41,18 @@ describe("scanIac", () => {
   test("tf 리소스·모듈·helm_release와 줄 수를 집계하고 .terraform은 건너뛴다", () => {
     const root = "tests/fixtures/iac"; // vitest는 app/에서 실행된다
     expect(scanIac(root)).toEqual({
-      terraformLines: 3,
-      resources: 2,
+      terraformLines: 8,
+      resources: 3,
       modules: 1,
-      helmReleases: 1,
+      helmReleases: 2,
+      helm: [
+        { name: "Prometheus", count: 1 },
+        { name: "기타", count: 1 },
+      ],
+      areas: [
+        { name: "Helm", count: 2 },
+        { name: "S3", count: 1 },
+      ],
     });
   });
 
@@ -54,6 +62,8 @@ describe("scanIac", () => {
       resources: 0,
       modules: 0,
       helmReleases: 0,
+      helm: [],
+      areas: [],
     });
   });
 });
