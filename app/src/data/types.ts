@@ -26,16 +26,27 @@ export interface ProfileMetrics {
   iac?: IacMetrics;
   /** 세미나·강의 이력. 없으면 표시하지 않는다. */
   lectures?: LectureMetrics;
+  /** Zendesk 담당 티켓의 생성 연도별 수 (로컬 집계). */
+  ticketsByYear?: YearCount[];
+}
+
+export interface LectureSession {
+  year: number;
+  /** lead = 주강사, assist = 보조 강사. */
+  role: "lead" | "assist";
+  topic: string;
+  detail?: string;
 }
 
 export interface LectureMetrics {
-  total: number;
-  /** 주강사 횟수. */
-  lead: number;
-  /** 보조 강사 횟수. */
-  assist: number;
   /** 시작 시점 (YYYY-MM). */
   since: string;
+  sessions: LectureSession[];
+}
+
+export interface YearCount {
+  year: number;
+  count: number;
 }
 
 export interface IacMetrics {

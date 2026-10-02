@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 // @ts-expect-error .mjs 스크립트는 타입 선언이 없다
-import { countClusters, parseConf, scanIac } from "../scripts/local-metrics.mjs";
+import { buildYearQueries, countClusters, parseConf, scanIac } from "../scripts/local-metrics.mjs";
 
 const cluster = (name: string, server: string) => ({ name, cluster: { server } });
 const ctx = (name: string, clusterName: string) => ({ name, context: { cluster: clusterName } });
@@ -65,5 +65,14 @@ describe("scanIac", () => {
       helm: [],
       areas: [],
     });
+  });
+});
+
+describe("buildYearQueries", () => {
+  test("연도별 생성일 범위 쿼리를 만든다", () => {
+    expect(buildYearQueries(2023, 2024)).toEqual([
+      { year: 2023, query: "created>2022-12-31 created<2024-01-01" },
+      { year: 2024, query: "created>2023-12-31 created<2025-01-01" },
+    ]);
   });
 });

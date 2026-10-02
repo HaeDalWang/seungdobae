@@ -139,12 +139,32 @@ describe("parseProfile iac 분포", () => {
 });
 
 describe("parseProfile lectures", () => {
-  test("metrics.lectures를 파싱하고 없으면 undefined로 둔다", () => {
-    const withLectures = parseProfile({
-      metrics: { tickets: 1, clusters: 2, lectures: { total: 13, lead: 9, assist: 4, since: "2024-04" } },
+  test("sessions를 파싱하고 role이 잘못된 항목은 버린다", () => {
+    const p = parseProfile({
+      metrics: {
+        lectures: {
+          since: "2024-04",
+          sessions: [
+            { year: 2024, role: "lead", topic: "EKS", detail: "중급" },
+            { year: 2025, role: "assist", topic: "ECS" },
+            { year: 2025, role: "??", topic: "bad" },
+          ],
+        },
+      },
     });
-    expect(withLectures.metrics.lectures).toEqual({ total: 13, lead: 9, assist: 4, since: "2024-04" });
-    expect(parseProfile({ metrics: { tickets: 1, clusters: 2 } }).metrics.lectures).toBeUndefined();
+    expect(p.metrics.lectures?.sessions).toEqual([
+      { year: 2024, role: "lead", topic: "EKS", detail: "중급" },
+      { year: 2025, role: "assist", topic: "ECS", detail: undefined },
+    ]);
+    expect(parseProfile({ metrics: {} }).metrics.lectures).toBeUndefined();
+  });
+});
+
+describe("parseProfile ticketsByYear", () => {
+  test("연도별 티켓 수를 파싱하고 잘못된 항목은 버린다", () => {
+    const p = parseProfile({ metrics: { ticketsByYear: [{ year: 2025, count: 10 }, { year: "x", count: 3 }, 7] } });
+    expect(p.metrics.ticketsByYear).toEqual([{ year: 2025, count: 10 }]);
+    expect(parseProfile({ metrics: {} }).metrics.ticketsByYear).toBeUndefined();
   });
 });
 

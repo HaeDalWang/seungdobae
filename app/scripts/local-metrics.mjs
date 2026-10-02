@@ -34,8 +34,9 @@ export function countClusters(kubeConfig) {
 
 const IAC_ROOT = resolve(homedir(), "salt");
 const IAC_SKIP_DIRS = new Set([".git", ".terraform", ".terragrunt-cache", "node_modules"]);
-const HELM_TOP = 20;
-const AREA_TOP = 15;
+const CAREER_START_YEAR = 2022; // profile.json의 careerStartDate 연도
+const HELM_TOP = 25;
+const AREA_TOP = 20;
 /** 다음 최상위 블록 시작 전까지를 한 블록으로 본다. */
 const NEXT_BLOCK = /\n(?:resource|module|data|locals|variable|output|provider)\s/;
 
@@ -92,26 +93,47 @@ export function parseConf(text) {
   return conf;
 }
 
-async function countTickets() {
+/** 연도별 생성일 범위 쿼리. Zendesk 날짜 비교는 `>`·`<`만 쓴다. */
+export function buildYearQueries(fromYear, toYear) {
+  const years = Array.from({ length: toYear - fromYear + 1 }, (_, i) => fromYear + i);
+  return years.map((year) => ({
+    year,
+    query: `created>${year - 1}-12-31 created<${year + 1}-01-01`,
+  }));
+}
+
+async function createZendeskCounter() {
   const conf = parseConf(await readFile(ZENDESK_CONF, "utf8"));
   const { ZENDESK_SUBDOMAIN: sub, ZENDESK_EMAIL: email, ZENDESK_API_TOKEN: token } = conf;
   if (!sub || !email || !token) throw new Error("zendesk.conf에 자격증명이 없습니다");
   const host = sub.endsWith(".zendesk.com") ? sub : `${sub}.zendesk.com`;
   const auth = "Basic " + Buffer.from(`${email}/token:${token}`).toString("base64");
-  const query = encodeURIComponent(`type:ticket assignee:${email}`);
-  const res = await fetchJson(`https://${host}/api/v2/search.json?query=${query}&per_page=1`, {
-    Authorization: auth,
-  });
-  if (!Number.isInteger(res.count)) throw new Error("Zendesk 응답에 count가 없습니다");
-  return res.count;
+  /** 내가 담당자인 티켓 중 extra 조건에 맞는 개수. */
+  return async (extra = "") => {
+    const query = encodeURIComponent(`type:ticket assignee:${email} ${extra}`.trim());
+    const res = await fetchJson(`https://${host}/api/v2/search.json?query=${query}&per_page=1`, {
+      Authorization: auth,
+    });
+    if (!Number.isInteger(res.count)) throw new Error("Zendesk 응답에 count가 없습니다");
+    return res.count;
+  };
 }
 
 async function main() {
   const shouldWrite = process.argv.includes("--write");
   const kube = JSON.parse(execFileSync("kubectl", ["config", "view", "-o", "json"]));
+  const countTickets = await createZendeskCounter();
+  const tickets = await countTickets();
+  const ticketsByYear = [];
+  for (const { year, query } of buildYearQueries(CAREER_START_YEAR, new Date().getFullYear())) {
+    ticketsByYear.push({ year, count: await countTickets(query) });
+  }
+  const yearSum = ticketsByYear.reduce((sum, y) => sum + y.count, 0);
+  if (yearSum !== tickets) console.warn(`[경고] 연도별 합계 ${yearSum} ≠ 전체 ${tickets} (경력 시작 연도 이전 티켓이 있나 확인)`);
   const next = {
     clusters: countClusters(kube),
-    tickets: await countTickets(),
+    tickets,
+    ticketsByYear,
     iac: scanIac(IAC_ROOT),
   };
 

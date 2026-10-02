@@ -13,6 +13,8 @@ import { calcCareerYears } from "../lib/career";
 import { formatNumber } from "../lib/format";
 import KpiWidget from "../components/KpiWidget";
 import ShareBarChart from "../components/ShareBarChart";
+import DetailToggle from "../components/DetailToggle";
+import { summarizeLectures } from "../lib/lectures";
 import DataBoundary from "../components/DataBoundary";
 
 export default function Overview() {
@@ -60,13 +62,18 @@ export default function Overview() {
     : [];
 
   const lectures = profile.data.metrics.lectures;
-  const lectureKpis = lectures
+  const lectureSummary = lectures ? summarizeLectures(lectures.sessions) : null;
+  const lectureKpis = lectureSummary
     ? [
-        { value: formatNumber(lectures.total), label: t.overview.lecturesTotal, unit: t.overview.lecturesUnit },
-        { value: formatNumber(lectures.lead), label: t.overview.lecturesLead, unit: t.overview.lecturesUnit },
-        { value: formatNumber(lectures.assist), label: t.overview.lecturesAssist, unit: t.overview.lecturesUnit },
+        { value: formatNumber(lectureSummary.total), label: t.overview.lecturesTotal, unit: t.overview.lecturesUnit },
+        { value: formatNumber(lectureSummary.lead), label: t.overview.lecturesLead, unit: t.overview.lecturesUnit },
+        { value: formatNumber(lectureSummary.assist), label: t.overview.lecturesAssist, unit: t.overview.lecturesUnit },
       ]
     : [];
+  const sessionYears = lectures
+    ? [...new Set(lectures.sessions.map((x) => x.year))].sort((a, b) => a - b)
+    : [];
+  const ticketsByYear = (profile.data.metrics.ticketsByYear ?? []).filter((y) => y.count > 0);
 
   return (
     <ContentLayout
@@ -89,18 +96,33 @@ export default function Overview() {
 
         <Container header={<Header variant="h2">{t.overview.title}</Header>}>
           <DataBoundary loading={loading} error={null}>
-            <Grid
-              gridDefinition={[
-                { colspan: { default: 6, xs: 3 } },
-                { colspan: { default: 6, xs: 3 } },
-                { colspan: { default: 6, xs: 3 } },
-                { colspan: { default: 6, xs: 3 } },
-              ]}
-            >
-              {kpis.map((kpi) => (
-                <KpiWidget key={kpi.label} value={kpi.value} label={kpi.label} unit={kpi.unit} />
-              ))}
-            </Grid>
+            <SpaceBetween size="s">
+              <Grid
+                gridDefinition={[
+                  { colspan: { default: 6, xs: 3 } },
+                  { colspan: { default: 6, xs: 3 } },
+                  { colspan: { default: 6, xs: 3 } },
+                  { colspan: { default: 6, xs: 3 } },
+                ]}
+              >
+                {kpis.map((kpi) => (
+                  <KpiWidget key={kpi.label} value={kpi.value} label={kpi.label} unit={kpi.unit} />
+                ))}
+              </Grid>
+              {ticketsByYear.length > 0 ? (
+                <DetailToggle title={t.overview.ticketsDetail}>
+                  <SpaceBetween size="xxs">
+                    <span>{t.overview.ticketsBasis}</span>
+                    {ticketsByYear.map((y) => (
+                      <span key={y.year}>
+                        {y.year} · {formatNumber(y.count)}
+                        {t.overview.ticketsYearUnit}
+                      </span>
+                    ))}
+                  </SpaceBetween>
+                </DetailToggle>
+              ) : null}
+            </SpaceBetween>
           </DataBoundary>
         </Container>
 
@@ -150,6 +172,27 @@ export default function Overview() {
               <Box variant="small" color="text-body-secondary">
                 {t.overview.lecturesSince} · {t.overview.lecturesTopics}
               </Box>
+              {lectures ? (
+                <DetailToggle title={t.overview.lecturesDetail}>
+                  <SpaceBetween size="xs">
+                    {sessionYears.map((year) => (
+                      <div key={year}>
+                        <Box variant="awsui-key-label">{year}</Box>
+                        <ul style={{ margin: 0, paddingInlineStart: "1.1rem" }}>
+                          {lectures.sessions
+                            .filter((x) => x.year === year)
+                            .map((x, i) => (
+                              <li key={`${year}-${i}`}>
+                                {x.role === "lead" ? t.overview.lecturesLead : t.overview.lecturesAssist} · {x.topic}
+                                {x.detail ? ` — ${x.detail}` : ""}
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </SpaceBetween>
+                </DetailToggle>
+              ) : null}
             </SpaceBetween>
           </Container>
         ) : null}

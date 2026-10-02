@@ -93,8 +93,28 @@
           "count": 2
         },
         {
-          "name": "기타",
-          "count": 30
+          "name": "Celery Exporter",
+          "count": 2
+        },
+        {
+          "name": "Elastic (ECK)",
+          "count": 2
+        },
+        {
+          "name": "Jenkins",
+          "count": 2
+        },
+        {
+          "name": "KEDA",
+          "count": 2
+        },
+        {
+          "name": "Locust",
+          "count": 2
+        },
+        {
+          "name": "기타 (16종)",
+          "count": 20
         }
       ],
       "areas": [
@@ -120,7 +140,7 @@
         },
         {
           "name": "API Gateway",
-          "count": 121
+          "count": 134
         },
         {
           "name": "ACM",
@@ -143,12 +163,12 @@
           "count": 59
         },
         {
-          "name": "SNS·SQS",
-          "count": 49
+          "name": "EC2",
+          "count": 52
         },
         {
-          "name": "EC2",
-          "count": 46
+          "name": "SNS·SQS",
+          "count": 49
         },
         {
           "name": "Lambda",
@@ -159,17 +179,136 @@
           "count": 25
         },
         {
-          "name": "기타",
-          "count": 178
+          "name": "OpenSearch",
+          "count": 22
+        },
+        {
+          "name": "WAF",
+          "count": 22
+        },
+        {
+          "name": "EKS",
+          "count": 18
+        },
+        {
+          "name": "AWS Code 시리즈",
+          "count": 12
+        },
+        {
+          "name": "Athena",
+          "count": 8
+        },
+        {
+          "name": "기타 (12종)",
+          "count": 77
         }
       ]
     },
     "lectures": {
-      "total": 13,
-      "lead": 9,
-      "assist": 4,
-      "since": "2024-04"
-    }
+      "since": "2024-04",
+      "sessions": [
+        {
+          "year": 2024,
+          "role": "lead",
+          "topic": "General Database & Storage",
+          "detail": "AWS 기본"
+        },
+        {
+          "year": 2024,
+          "role": "lead",
+          "topic": "General Network & Compute",
+          "detail": "AWS 기본"
+        },
+        {
+          "year": 2024,
+          "role": "lead",
+          "topic": "General Database & Storage",
+          "detail": "AWS 기본"
+        },
+        {
+          "year": 2024,
+          "role": "lead",
+          "topic": "Containers (EKS)",
+          "detail": "빠르고 안정적인 컨테이너 워크로드 운영"
+        },
+        {
+          "year": 2024,
+          "role": "assist",
+          "topic": "Containers (EKS)",
+          "detail": "빠르고 안정적인 컨테이너 워크로드 운영"
+        },
+        {
+          "year": 2024,
+          "role": "lead",
+          "topic": "General Network & Compute",
+          "detail": "AWS 기본"
+        },
+        {
+          "year": 2025,
+          "role": "lead",
+          "topic": "General Network & Compute",
+          "detail": "AWS 기본"
+        },
+        {
+          "year": 2025,
+          "role": "assist",
+          "topic": "Containers (ECS)",
+          "detail": "고성능 컨테이너 관리 서비스"
+        },
+        {
+          "year": 2025,
+          "role": "lead",
+          "topic": "Containers (EKS)",
+          "detail": "중급"
+        },
+        {
+          "year": 2025,
+          "role": "assist",
+          "topic": "Containers (EKS)",
+          "detail": "고급"
+        },
+        {
+          "year": 2025,
+          "role": "lead",
+          "topic": "General Database & Storage",
+          "detail": "AWS 심화"
+        },
+        {
+          "year": 2025,
+          "role": "lead",
+          "topic": "DevOps",
+          "detail": "DevOps, CI/CD, Agile 및 AWS Code 시리즈 활용"
+        },
+        {
+          "year": 2026,
+          "role": "assist",
+          "topic": "AI-DLC",
+          "detail": "실전 워크숍"
+        }
+      ]
+    },
+    "ticketsByYear": [
+      {
+        "year": 2022,
+        "count": 0
+      },
+      {
+        "year": 2023,
+        "count": 31
+      },
+      {
+        "year": 2024,
+        "count": 295
+      },
+      {
+        "year": 2025,
+        "count": 233
+      },
+      {
+        "year": 2026,
+        "count": 223
+      }
+    ]
   },
   "contact": {
     "email": "svvwac98@saltware.co.kr",

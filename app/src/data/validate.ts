@@ -16,6 +16,8 @@ import {
   type BlogData,
   type BlogPost,
   type TechShare,
+  type LectureSession,
+  type YearCount,
   EMPTY_PROFILE,
   EMPTY_GITHUB,
   EMPTY_CREDLY,
@@ -50,6 +52,26 @@ function parseShares(raw: unknown): TechShare[] {
     .filter((item) => item.name !== "" && item.count > 0);
 }
 
+function parseSessions(raw: unknown): LectureSession[] {
+  return asArray(raw)
+    .filter(isObject)
+    .filter((item) => item.role === "lead" || item.role === "assist")
+    .map((item) => ({
+      year: num(item.year),
+      role: item.role as LectureSession["role"],
+      topic: str(item.topic),
+      detail: typeof item.detail === "string" ? item.detail : undefined,
+    }))
+    .filter((item) => item.year > 0 && item.topic !== "");
+}
+
+function parseYearCounts(raw: unknown): YearCount[] {
+  return asArray(raw)
+    .filter(isObject)
+    .map((item) => ({ year: num(item.year), count: num(item.count) }))
+    .filter((item) => item.year > 0);
+}
+
 export function parseProfile(raw: unknown): Profile {
   if (!isObject(raw)) return EMPTY_PROFILE;
   const contact = isObject(raw.contact) ? raw.contact : {};
@@ -73,13 +95,9 @@ export function parseProfile(raw: unknown): Profile {
           }
         : undefined,
       lectures: isObject(metrics.lectures)
-        ? {
-            total: num(metrics.lectures.total),
-            lead: num(metrics.lectures.lead),
-            assist: num(metrics.lectures.assist),
-            since: str(metrics.lectures.since),
-          }
+        ? { since: str(metrics.lectures.since), sessions: parseSessions(metrics.lectures.sessions) }
         : undefined,
+      ticketsByYear: Array.isArray(metrics.ticketsByYear) ? parseYearCounts(metrics.ticketsByYear) : undefined,
     },
     contact: {
       email: typeof contact.email === "string" ? contact.email : undefined,

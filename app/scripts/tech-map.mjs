@@ -104,6 +104,27 @@ const AWS_AREAS = {
   network: "네트워크(VPC)",
   internet: "네트워크(VPC)",
   nat: "네트워크(VPC)",
+  apigatewayv2: "API Gateway",
+  athena: "Athena",
+  ecr: "ECR",
+  ses: "SES",
+  sesv2: "SES",
+  cloudfront: "CloudFront",
+  cognito: "Cognito",
+  volume: "EC2",
+  launch: "EC2",
+  db: "RDS",
+  codepipeline: "AWS Code 시리즈",
+  codebuild: "AWS Code 시리즈",
+  codestarconnections: "AWS Code 시리즈",
+  codeconnections: "AWS Code 시리즈",
+  fsx: "FSx",
+  dynamodb: "DynamoDB",
+  kinesis: "Kinesis",
+  amplify: "Amplify",
+  connect: "Connect",
+  accessanalyzer: "보안·감사",
+  cloudtrail: "보안·감사",
 };
 
 export function resourceArea(type) {
@@ -111,6 +132,8 @@ export function resourceArea(type) {
   if (type.startsWith("kubernetes_") || type.startsWith("kubectl_")) return "Kubernetes";
   if (type.startsWith("keycloak_")) return "Keycloak";
   if (type.startsWith("elasticstack_")) return "Elastic Stack";
+  if (type.startsWith("opensearch_")) return "OpenSearch";
+  if (type.startsWith("mongodbatlas_")) return "MongoDB Atlas";
   if (type.startsWith("aws_")) return AWS_AREAS[type.split("_")[1]] ?? OTHER;
   return OTHER;
 }
@@ -120,6 +143,9 @@ export function topWithOther(counts, limit) {
   const other = counts.get(OTHER) ?? 0;
   const ranked = [...counts].filter(([name]) => name !== OTHER).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
   const head = ranked.slice(0, limit).map(([name, count]) => ({ name, count }));
-  const rest = ranked.slice(limit).reduce((sum, [, count]) => sum + count, other);
-  return rest > 0 ? [...head, { name: OTHER, count: rest }] : head;
+  const rolled = ranked.slice(limit);
+  const rest = rolled.reduce((sum, [, count]) => sum + count, other);
+  // 몇 종이 묶였는지 보여줘서 "기타"가 뭉뚱그린 정보가 아님을 드러낸다.
+  const label = rolled.length > 0 ? `${OTHER} (${rolled.length}종)` : OTHER;
+  return rest > 0 ? [...head, { name: label, count: rest }] : head;
 }

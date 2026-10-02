@@ -35,6 +35,11 @@ describe("resourceArea", () => {
     expect(resourceArea("aws_security_group_rule")).toBe("네트워크(VPC)");
     expect(resourceArea("kubectl_manifest")).toBe("Kubernetes");
     expect(resourceArea("helm_release")).toBe("Helm");
+    expect(resourceArea("aws_apigatewayv2_api")).toBe("API Gateway");
+    expect(resourceArea("aws_codepipeline")).toBe("AWS Code 시리즈");
+    expect(resourceArea("aws_db_instance")).toBe("RDS");
+    expect(resourceArea("opensearch_index_template")).toBe("OpenSearch");
+    expect(resourceArea("mongodbatlas_project")).toBe("MongoDB Atlas");
     expect(resourceArea("aws_unknownsvc_x")).toBe("기타");
     expect(resourceArea("random_password")).toBe("기타");
   });
@@ -46,7 +51,14 @@ describe("topWithOther", () => {
     expect(topWithOther(counts, 2)).toEqual([
       { name: "A", count: 5 },
       { name: "B", count: 3 },
-      { name: "기타", count: 7 },
+      { name: "기타 (2종)", count: 7 },
+    ]);
+  });
+
+  test("묶인 이름이 없고 매핑 안 된 항목만 있으면 종 수 없이 기타로 둔다", () => {
+    expect(topWithOther(new Map([["A", 2], ["기타", 1]]), 5)).toEqual([
+      { name: "A", count: 2 },
+      { name: "기타", count: 1 },
     ]);
   });
 
