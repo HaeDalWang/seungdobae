@@ -143,6 +143,7 @@ function parseBadge(raw: unknown): CredlyBadge | null {
     imageUrl: str(raw.imageUrl),
     url: str(raw.url),
     issuedAt: str(raw.issuedAt),
+    expiresAt: str(raw.expiresAt),
   };
 }
 

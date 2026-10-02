@@ -46,6 +46,8 @@ function normalizeBadge(badge) {
         ? `https://www.credly.com/badges/${badge.id}/public_url`
         : "",
     issuedAt: typeof badge?.issued_at_date === "string" ? badge.issued_at_date : "",
+    // 갱신하면 새 배지가 아니라 이 값만 연장된다.
+    expiresAt: typeof badge?.expires_at_date === "string" ? badge.expires_at_date : "",
   };
 }
 

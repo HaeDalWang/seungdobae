@@ -56,6 +56,12 @@ export default function Certifications() {
                 content: (badge) => formatDate(badge.issuedAt),
               },
               {
+                id: "expiresAt",
+                header: t.certifications.expiresAt,
+                content: (badge) =>
+                  badge.expiresAt ? `~ ${formatDate(badge.expiresAt)}` : "—",
+              },
+              {
                 id: "skills",
                 header: t.certifications.skills,
                 content: (badge) =>

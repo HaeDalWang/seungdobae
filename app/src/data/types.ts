@@ -98,6 +98,8 @@ export interface CredlyBadge {
   url: string;
   /** YYYY-MM-DD. */
   issuedAt: string;
+  /** YYYY-MM-DD. 갱신 시 연장되는 값. 만료 없음/미상이면 빈 문자열. */
+  expiresAt: string;
 }
 
 export interface CredlyData {

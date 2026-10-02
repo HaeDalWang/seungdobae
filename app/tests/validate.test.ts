@@ -126,6 +126,17 @@ describe("parseCredly", () => {
     expect(data.badges[0].name).toBe("SAA");
   });
 
+  test("expiresAt을 보존하고 없으면 빈 문자열로 둔다", () => {
+    const data = parseCredly({
+      badges: [
+        { name: "SAP", expiresAt: "2029-08-14" },
+        { name: "신규" },
+      ],
+    });
+    expect(data.badges[0].expiresAt).toBe("2029-08-14");
+    expect(data.badges[1].expiresAt).toBe("");
+  });
+
   test("객체가 아니면 빈 Credly 데이터로 폴백한다", () => {
     expect(parseCredly("bad")).toEqual(EMPTY_CREDLY);
   });

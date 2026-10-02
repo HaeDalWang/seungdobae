@@ -5,27 +5,28 @@
       "name": "AWS Certified DevOps Engineer – Professional",
       "issuer": "Amazon Web Services Training and Certification",
       "skills": [
-        "Amazon Web Services",
         "AWS",
         "AWS Certification",
         "AWS Cloud",
+        "Amazon Web Services",
         "Cloud Certification",
         "DevOps",
         "DevOps And Automation"
       ],
       "imageUrl": "https://images.credly.com/images/bd31ef42-d460-493e-8503-39592aaf0458/image.png",
       "url": "https://www.credly.com/badges/4827c148-8643-4b55-b694-850e37f07dc8/public_url",
-      "issuedAt": "2024-04-29"
+      "issuedAt": "2024-04-29",
+      "expiresAt": "2027-04-29"
     },
     {
-      "id": "6ece5208-0358-41ae-aae0-49153d9828c7",
+      "id": "a171349d-f654-4300-9ef8-5f7288534633",
       "name": "AWS Certified Solutions Architect – Professional",
       "issuer": "Amazon Web Services Training and Certification",
       "skills": [
-        "Amazon Web Services",
         "AWS",
         "AWS Certification",
         "AWS Cloud",
+        "Amazon Web Services",
         "Cloud Architecture",
         "Cloud Certification",
         "Cloud Data",
@@ -34,18 +35,19 @@
         "Cloud Services"
       ],
       "imageUrl": "https://images.credly.com/images/2d84e428-9078-49b6-a804-13c15383d0de/image.png",
-      "url": "https://www.credly.com/badges/6ece5208-0358-41ae-aae0-49153d9828c7/public_url",
-      "issuedAt": "2023-08-17"
+      "url": "https://www.credly.com/badges/a171349d-f654-4300-9ef8-5f7288534633/public_url",
+      "issuedAt": "2023-08-17",
+      "expiresAt": "2029-08-14"
     },
     {
-      "id": "77e471a6-3646-47a7-8622-43ff60f3159c",
+      "id": "d021616e-2625-4f5f-bad4-5fb00657bc30",
       "name": "AWS Certified Solutions Architect – Associate",
       "issuer": "Amazon Web Services Training and Certification",
       "skills": [
-        "Amazon Web Services",
         "AWS",
         "AWS Certification",
         "AWS Cloud",
+        "Amazon Web Services",
         "Cloud Architecture",
         "Cloud Certification",
         "Cloud Data",
@@ -53,9 +55,10 @@
         "Cloud Services"
       ],
       "imageUrl": "https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
-      "url": "https://www.credly.com/badges/77e471a6-3646-47a7-8622-43ff60f3159c/public_url",
-      "issuedAt": "2023-07-10"
+      "url": "https://www.credly.com/badges/d021616e-2625-4f5f-bad4-5fb00657bc30/public_url",
+      "issuedAt": "2023-07-10",
+      "expiresAt": "2029-08-14"
     }
   ],
-  "fetchedAt": "2026-06-10T01:06:48.720Z"
+  "fetchedAt": "2026-10-02T06:55:40.025Z"
 }

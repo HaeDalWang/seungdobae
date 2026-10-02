@@ -53,6 +53,7 @@ export const ko = {
     title: "자격증",
     issuedBy: "발급",
     issuedAt: "취득일",
+    expiresAt: "유효기간(갱신 반영)",
     viewBadge: "배지 보기",
     skills: "관련 스킬",
   },
