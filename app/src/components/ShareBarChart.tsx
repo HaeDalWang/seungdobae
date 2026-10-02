@@ -34,6 +34,7 @@ export default function ShareBarChart({ title, shares, label }: ShareBarChartPro
         },
       ]}
       xScaleType="categorical"
+      yTickFormatter={(value) => `${value}%`}
       horizontalBars
       hideLegend
       hideFilter
