@@ -19,7 +19,7 @@ concurrency:
 
 env:
   AWS_REGION: ap-northeast-2
-  NODE_VERSION: "20"
+  NODE_VERSION: "24"
 
 jobs:
   deploy:
@@ -29,10 +29,10 @@ jobs:
         working-directory: app
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
@@ -61,7 +61,7 @@ jobs:
         run: npm run build
 
       - name: Configure AWS credentials (OIDC)
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
