@@ -39,7 +39,7 @@ export default function Overview() {
     ...certifications.data.map((c) => c.name),
   ];
 
-  // KPI 4종: 경력연차 · 누적 티켓 · 운영 클러스터 · 자격증
+  // KPI 4종: 경력연차 · 누적 티켓 · 지원 클러스터 · 자격증
   // GitHub repo/star는 개발 지표라 헤드라인에서 제외, 운영 성과를 전면에 둔다.
   const kpis = [
     { value: String(careerYears), label: t.overview.careerYears, unit: t.overview.careerUnit },

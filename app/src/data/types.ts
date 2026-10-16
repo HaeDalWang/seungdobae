@@ -20,7 +20,7 @@ export interface ContactInfo {
 export interface ProfileMetrics {
   /** 누적 처리한 기술 지원 티켓 수. */
   tickets: number;
-  /** 상시 운영 중인 EKS 클러스터 수. */
+  /** 지원(알람·On-Call 대응) 중인 EKS 클러스터 수. */
   clusters: number;
   /** 고객 환경 IaC 규모(로컬 집계). 없으면 표시하지 않는다. */
   iac?: IacMetrics;

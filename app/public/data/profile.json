@@ -1,7 +1,7 @@
 {
   "name": "배승도",
   "title": "AWS MSP Engineer",
-  "bio": "여러 고객사의 EKS 클러스터를 동시에 운영하며, 무중단 버전 업그레이드를 플랜·리포트·런북으로 표준화해 온 AWS MSP 엔지니어입니다. Terraform 기반 IaC와 가용성 높은 아키텍처로 운영 부담을 줄이고, 반복되는 운영 작업을 자동화·문서화로 자산화하는 일에 집중합니다.",
+  "bio": "1개 고객사 EKS 4개 클러스터를 대리 운영하고, 여러 고객사 EKS의 기술 지원·24/7 On-Call과 무중단 업그레이드 현장 작업을 맡아 온 AWS MSP 엔지니어입니다. 티켓 대응·버전 업그레이드처럼 현장에서 반복되는 업무를 AI 에이전트 툴링으로 시스템화하는 일에 집중합니다.",
   "careerStartDate": "2022-01-10",
   "metrics": {
     "tickets": 782,
@@ -311,7 +311,7 @@
     ]
   },
   "contact": {
-    "email": "svvwac98@saltware.co.kr",
+    "email": "svvwac98@gmail.com",
     "github": "https://github.com/HaeDalWang",
     "linkedin": "https://www.linkedin.com/in/%EC%8A%B9%EB%8F%84-%EB%B0%B0-091b60348/",
     "location": "Seoul, South Korea"
