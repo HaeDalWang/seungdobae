@@ -37,7 +37,7 @@
     "url": "https://github.com/HaeDalWang/poc-env"
   },
   {
-    "title": "사내 AI 티켓 대응 워크스페이스 설계·유지보수 (비공개)",
+    "title": "사내 AI 티켓 대응 워크스페이스 설계·유지보수",
     "description": "MSP 티켓 대응 노하우를 Claude Code·Codex·Kiro 등 여러 AI 도구에서 공통으로 쓰는 워크스페이스로 표준화해 직접 유지보수 중인 사내 프로젝트. 온보딩 자동화, 정식 태그 릴리스와 자동 업데이트, 사용 지표 수집기(Lambda·DynamoDB — 고객 내용은 클라이언트와 수집기에서 이중으로 차단), 평가(eval) 체계, 정책 카드 기반 지식 순환 구조를 설계·구현. 최근 3개월간 119 커밋.",
     "stack": [
       "AI Agent",
@@ -47,7 +47,8 @@
       "AWS Lambda",
       "DynamoDB",
       "Terraform"
-    ]
+    ],
+    "url": "https://github.com/HaeDalWang/tiket-public"
   },
   {
     "title": "ctxmeter — AI 코딩 에이전트 컨텍스트 측정 CLI",
