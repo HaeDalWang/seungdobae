@@ -3,11 +3,12 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import "@cloudscape-design/global-styles/index.css";
-import { applyColorMode, getInitialMode } from "./lib/theme";
+import { applyBrandTheme, applyColorMode, getInitialMode } from "./lib/theme";
 import App from "./App";
 
-// 첫 페인트 전에 색상 모드를 적용해 깜빡임(FOUC)을 막는다.
+// 첫 페인트 전에 색상 모드·테마를 적용해 깜빡임(FOUC)을 막는다.
 applyColorMode(getInitialMode());
+applyBrandTheme();
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {

@@ -9,10 +9,13 @@ import Badge from "@cloudscape-design/components/badge";
 
 import { useStrings } from "../i18n";
 import { useProfile, useCredly, useCertifications, useProjects } from "../data/hooks";
+import { HERO_BACKGROUND } from "../lib/theme";
 import { calcCareerYears } from "../lib/career";
 import { formatNumber } from "../lib/format";
 import KpiWidget from "../components/KpiWidget";
+import ShareDonutChart from "../components/ShareDonutChart";
 import ShareBarChart from "../components/ShareBarChart";
+import { contactLinks } from "../lib/contact";
 import DetailToggle from "../components/DetailToggle";
 import { summarizeLectures } from "../lib/lectures";
 import DataBoundary from "../components/DataBoundary";
@@ -83,33 +86,27 @@ export default function Overview() {
     ? [...new Set(lectures.sessions.map((x) => x.year))].sort((a, b) => a - b)
     : [];
   const ticketsByYear = (profile.data.metrics.ticketsByYear ?? []).filter((y) => y.count > 0);
+  const contacts = contactLinks(profile.data.contact);
 
   return (
     <ContentLayout
+      defaultPadding
+      headerVariant="high-contrast"
+      headerBackgroundStyle={HERO_BACKGROUND}
       header={
-        <Header variant="h1" description={profile.data.title}>
-          {profile.data.name || t.overview.title}
-        </Header>
-      }
-    >
-      <SpaceBetween size="l">
-        <Container header={<Header variant="h2">{t.overview.about}</Header>}>
+        <SpaceBetween size="l">
+          <Header variant="h1" description={profile.data.title}>
+            {profile.data.name || t.overview.title}
+          </Header>
           <DataBoundary
             loading={profile.loading}
             error={profile.error}
             isEmpty={profile.data.bio === ""}
           >
-            <Box variant="p">{profile.data.bio}</Box>
+            <Box variant="p" fontSize="heading-s">
+              {profile.data.bio}
+            </Box>
           </DataBoundary>
-        </Container>
-
-        <Container
-          header={
-            <Header variant="h2" description={t.overview.summaryDescription}>
-              {t.overview.title}
-            </Header>
-          }
-        >
           <DataBoundary loading={loading} error={null}>
             <SpaceBetween size="s">
               <Grid
@@ -124,6 +121,7 @@ export default function Overview() {
                   <KpiWidget key={kpi.label} value={kpi.value} label={kpi.label} unit={kpi.unit} />
                 ))}
               </Grid>
+              <Box variant="small">{t.overview.summaryDescription}</Box>
               {ticketsByYear.length > 0 ? (
                 <DetailToggle title={t.overview.ticketsDetail}>
                   <SpaceBetween size="xxs">
@@ -139,8 +137,24 @@ export default function Overview() {
               ) : null}
             </SpaceBetween>
           </DataBoundary>
-        </Container>
-
+          {contacts.length > 0 ? (
+            <SpaceBetween size="m" direction="horizontal">
+              {contacts.map((link) => (
+                <Link
+                  key={link.key}
+                  href={link.href}
+                  external={link.external}
+                  externalIconAriaLabel={t.common.externalLink}
+                  fontSize="body-s"
+                >
+                  {t.contact[link.key]}
+                </Link>
+              ))}
+            </SpaceBetween>
+          ) : null}
+        </SpaceBetween>
+      }
+      secondaryHeader={
         <Container header={<Header variant="h2">{t.overview.trustTitle}</Header>}>
           <SpaceBetween size="s">
             <Box variant="p">{t.overview.trustBody}</Box>
@@ -149,96 +163,9 @@ export default function Overview() {
             </Link>
           </SpaceBetween>
         </Container>
-
-        {certNames.length > 0 ? (
-          <Container
-            header={
-              <Header variant="h2" description={t.overview.certListDescription}>
-                {t.overview.certListTitle}
-              </Header>
-            }
-          >
-            <SpaceBetween size="xs" direction="horizontal">
-              {certNames.map((name) => (
-                <Badge key={name} color="blue">
-                  {name}
-                </Badge>
-              ))}
-            </SpaceBetween>
-          </Container>
-        ) : null}
-
-        {iacKpis.length > 0 ? (
-          <Container
-            header={
-              <Header variant="h2" description={t.overview.iacDescription}>
-                {t.overview.iacTitle}
-              </Header>
-            }
-          >
-            <Grid
-              gridDefinition={[
-                { colspan: { default: 6, xs: 3 } },
-                { colspan: { default: 6, xs: 3 } },
-                { colspan: { default: 6, xs: 3 } },
-                { colspan: { default: 6, xs: 3 } },
-              ]}
-            >
-              {iacKpis.map((kpi) => (
-                <KpiWidget key={kpi.label} value={kpi.value} label={kpi.label} unit={kpi.unit} />
-              ))}
-            </Grid>
-          </Container>
-        ) : null}
-
-        {lectureKpis.length > 0 ? (
-          <Container
-            header={
-              <Header variant="h2" description={t.overview.lecturesDescription}>
-                {t.overview.lecturesTitle}
-              </Header>
-            }
-          >
-            <SpaceBetween size="m">
-              <Grid
-                gridDefinition={[
-                  { colspan: { default: 4, xs: 3 } },
-                  { colspan: { default: 4, xs: 3 } },
-                  { colspan: { default: 4, xs: 3 } },
-                ]}
-              >
-                {lectureKpis.map((kpi) => (
-                  <KpiWidget key={kpi.label} value={kpi.value} label={kpi.label} unit={kpi.unit} />
-                ))}
-              </Grid>
-              <Box variant="small" color="text-body-secondary">
-                {t.overview.lecturesSince} · {t.overview.lecturesTopics}
-              </Box>
-              {lectures ? (
-                <DetailToggle title={t.overview.lecturesDetail}>
-                  <SpaceBetween size="xs">
-                    {sessionYears.map((year) => (
-                      <div key={year}>
-                        <Box variant="awsui-key-label">{year}</Box>
-                        <ul style={{ margin: 0, paddingInlineStart: "1.1rem" }}>
-                          {lectures.sessions
-                            .filter((x) => x.year === year)
-                            .map((x, i) => (
-                              <li key={`${year}-${i}`}>
-                                {x.role === "lead" ? t.overview.lecturesLead : t.overview.lecturesAssist} · {x.topic}
-                                {x.detail ? ` — ${x.detail}` : ""}
-                              </li>
-                            ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </SpaceBetween>
-                </DetailToggle>
-              ) : null}
-            </SpaceBetween>
-          </Container>
-        ) : null}
-
+      }
+    >
+      <SpaceBetween size="l">
         {featured ? (
           <Container
             header={
@@ -291,6 +218,96 @@ export default function Overview() {
           </Container>
         ) : null}
 
+        {iacKpis.length > 0 ? (
+          <Container
+            header={
+              <Header variant="h2" description={t.overview.iacDescription}>
+                {t.overview.iacTitle}
+              </Header>
+            }
+          >
+            <Grid
+              gridDefinition={[
+                { colspan: { default: 6, xs: 3 } },
+                { colspan: { default: 6, xs: 3 } },
+                { colspan: { default: 6, xs: 3 } },
+                { colspan: { default: 6, xs: 3 } },
+              ]}
+            >
+              {iacKpis.map((kpi) => (
+                <KpiWidget key={kpi.label} value={kpi.value} label={kpi.label} unit={kpi.unit} />
+              ))}
+            </Grid>
+          </Container>
+        ) : null}
+
+        <Grid gridDefinition={[{ colspan: { default: 12, m: 6 } }, { colspan: { default: 12, m: 6 } }]}>
+          {certNames.length > 0 ? (
+            <Container
+              header={
+                <Header variant="h2" description={t.overview.certListDescription}>
+                  {t.overview.certListTitle}
+                </Header>
+              }
+            >
+              <SpaceBetween size="xs" direction="horizontal">
+                {certNames.map((name) => (
+                  <Badge key={name} color="blue">
+                    {name}
+                  </Badge>
+                ))}
+              </SpaceBetween>
+            </Container>
+          ) : null}
+          {lectureKpis.length > 0 ? (
+            <Container
+              header={
+                <Header variant="h2" description={t.overview.lecturesDescription}>
+                  {t.overview.lecturesTitle}
+                </Header>
+              }
+            >
+              <SpaceBetween size="m">
+                <Grid
+                  gridDefinition={[
+                    { colspan: { default: 4, xs: 3 } },
+                    { colspan: { default: 4, xs: 3 } },
+                    { colspan: { default: 4, xs: 3 } },
+                  ]}
+                >
+                  {lectureKpis.map((kpi) => (
+                    <KpiWidget key={kpi.label} value={kpi.value} label={kpi.label} unit={kpi.unit} />
+                  ))}
+                </Grid>
+                <Box variant="small" color="text-body-secondary">
+                  {t.overview.lecturesSince} · {t.overview.lecturesTopics}
+                </Box>
+                {lectures ? (
+                  <DetailToggle title={t.overview.lecturesDetail}>
+                    <SpaceBetween size="xs">
+                      {sessionYears.map((year) => (
+                        <div key={year}>
+                          <Box variant="awsui-key-label">{year}</Box>
+                          <ul style={{ margin: 0, paddingInlineStart: "1.1rem" }}>
+                            {lectures.sessions
+                              .filter((x) => x.year === year)
+                              .map((x, i) => (
+                                <li key={`${year}-${i}`}>
+                                  {x.role === "lead" ? t.overview.lecturesLead : t.overview.lecturesAssist} · {x.topic}
+                                  {x.detail ? ` — ${x.detail}` : ""}
+                                </li>
+                              ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </SpaceBetween>
+                  </DetailToggle>
+                ) : null}
+              </SpaceBetween>
+            </Container>
+          ) : null}
+        </Grid>
+
         {iac?.helm && iac.helm.length > 0 && iac.areas && iac.areas.length > 0 ? (
           <Container
             header={
@@ -299,14 +316,14 @@ export default function Overview() {
               </Header>
             }
           >
-            <Grid gridDefinition={[{ colspan: { default: 12, m: 6 } }, { colspan: { default: 12, m: 6 } }]}>
+            <Grid gridDefinition={[{ colspan: { default: 12, s: 6 } }, { colspan: { default: 12, s: 6 } }]}>
               <SpaceBetween size="xs">
                 <Box variant="h3">{t.overview.techHelm}</Box>
-                <ShareBarChart title={t.overview.techHelm} shares={iac.helm} label={t.overview.techShareLabel} />
+                <ShareBarChart title={t.overview.techHelm} shares={iac.helm} />
               </SpaceBetween>
               <SpaceBetween size="xs">
                 <Box variant="h3">{t.overview.techAreas}</Box>
-                <ShareBarChart title={t.overview.techAreas} shares={iac.areas} label={t.overview.techShareLabel} />
+                <ShareDonutChart title={t.overview.techAreas} shares={iac.areas} />
               </SpaceBetween>
             </Grid>
           </Container>

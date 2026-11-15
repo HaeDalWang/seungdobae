@@ -75,6 +75,13 @@ export interface Profile {
   contact: ContactInfo;
 }
 
+export interface Milestone {
+  /** YYYY-MM 또는 YYYY. */
+  date: string;
+  title: string;
+  detail?: string;
+}
+
 export interface ExperienceItem {
   company: string;
   role: string;
@@ -84,6 +91,10 @@ export interface ExperienceItem {
   endDate: string | null;
   /** 성과/업무 요약 bullet. */
   highlights: string[];
+  /** 직무 단계 이력. 있으면 타임라인에서 입사 이벤트 대신 쓴다. */
+  milestones?: Milestone[];
+  /** 현재 집중하는 일. endDate가 null인 경력에만 의미가 있다. */
+  currentFocus?: string;
 }
 
 export interface ProjectItem {

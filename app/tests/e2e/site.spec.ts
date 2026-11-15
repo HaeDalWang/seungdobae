@@ -5,8 +5,6 @@ const ROUTES = [
   { path: "/experience", heading: "경력" },
   { path: "/projects", heading: "프로젝트" },
   { path: "/certifications", heading: "자격증" },
-  { path: "/activity", heading: "활동" },
-  { path: "/contact", heading: "연락처" },
 ];
 
 const BREAKPOINTS = [
@@ -21,6 +19,18 @@ test.describe("라우팅 및 렌더링", () => {
     await page.goto("/");
     await expect(page).toHaveURL(/\/overview$/);
     await expect(page.locator("h1")).toBeVisible();
+  });
+
+  test("옛 /activity 링크는 /projects로 리다이렉트된다", async ({ page }) => {
+    await page.goto("/activity");
+    await expect(page).toHaveURL(/\/projects$/);
+    await expect(page.locator("h1").first()).toContainText("프로젝트");
+  });
+
+  test("옛 /contact 링크는 /overview로 리다이렉트된다", async ({ page }) => {
+    await page.goto("/contact");
+    await expect(page).toHaveURL(/\/overview$/);
+    await expect(page.locator("h1").first()).toContainText("배승도");
   });
 
   for (const route of ROUTES) {

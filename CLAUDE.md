@@ -55,7 +55,7 @@
 | `profile.json` (metrics 외) · `experience.json` · `projects.json` · `certifications.json` | 사람(나) | 사실만. Claude는 내가 준 사실을 다듬기만 한다 |
 | `profile.json`의 `metrics` | `npm run metrics:local -- --write` (로컬 전용) | 손으로 고치지 않는다. kubeconfig·Zendesk·`~/salt` IaC를 읽어 숫자만 남긴다. CI에서 돌리지 않는다 |
 | `github.json` · `credly.json` | CI(`fetch:*`)가 매 배포마다 덮어씀 | 손으로 고치지 않는다 |
-| `blog.json` | 사람 | 비어 있으면 Activity에서 블로그 섹션이 숨겨진다 |
+| `blog.json` | 사람 | 비어 있으면 프로젝트 탭 하단의 블로그 섹션이 숨겨진다 |
 
 - JSON은 신뢰하지 않는 입력이다. 모든 파싱은 `src/data/validate.ts`를 거친다.
 - 필드를 추가하면 `src/data/types.ts` + `validate.ts` + `tests/validate.test.ts`를 함께 고친다.
@@ -64,8 +64,8 @@
 ## 코드 구조
 
 ```
-app/src/views/       6개 뷰 (Overview / Experience / Projects / Certifications / Activity / Contact)
-app/src/components/  위젯 (KpiWidget, ShareBarChart, DetailToggle, DataBoundary)
+app/src/views/       4개 뷰 (Overview / Experience / Projects / Certifications) — /activity·/contact는 리다이렉트
+app/src/components/  위젯 (KpiWidget, ShareBarChart, ShareDonutChart, DetailToggle, DataBoundary)
 app/src/data/        타입 · 검증 · 로더 훅
 app/src/lib/         순수 로직 (career, format, lectures, link, theme) — 테스트 대상
 app/src/i18n/ko.ts   UI 문자열은 전부 여기. 뷰에 한국어 리터럴을 직접 쓰지 않는다

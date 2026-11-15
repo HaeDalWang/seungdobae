@@ -69,6 +69,31 @@ describe("parseExperience", () => {
   });
 });
 
+describe("parseExperience milestones/currentFocus", () => {
+  test("유효한 milestones와 currentFocus를 보존한다", () => {
+    const [item] = parseExperience([
+      {
+        company: "회사",
+        milestones: [{ date: "2022-01", title: "입사", detail: "상세" }, { date: "2023", title: "이동" }],
+        currentFocus: "집중",
+      },
+    ]);
+    expect(item.milestones).toEqual([
+      { date: "2022-01", title: "입사", detail: "상세" },
+      { date: "2023", title: "이동", detail: undefined },
+    ]);
+    expect(item.currentFocus).toBe("집중");
+  });
+
+  test("날짜 형식이 틀리거나 title이 없는 milestone은 버리고, 남는 게 없으면 undefined", () => {
+    const [item] = parseExperience([
+      { company: "회사", milestones: [{ date: "2022-13", title: "x" }, { date: "2022-01", title: "" }, "bad"], currentFocus: 3 },
+    ]);
+    expect(item.milestones).toBeUndefined();
+    expect(item.currentFocus).toBeUndefined();
+  });
+});
+
 describe("parseProjects", () => {
   test("title 없는 항목은 제외한다", () => {
     const items = parseProjects([{ description: "설명만" }, { title: "프로젝트" }]);

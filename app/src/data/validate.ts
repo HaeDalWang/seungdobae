@@ -18,6 +18,7 @@ import {
   type TechShare,
   type LectureSession,
   type YearCount,
+  type Milestone,
   EMPTY_PROFILE,
   EMPTY_GITHUB,
   EMPTY_CREDLY,
@@ -108,6 +109,22 @@ export function parseProfile(raw: unknown): Profile {
   };
 }
 
+const MILESTONE_DATE = /^\d{4}(-(0[1-9]|1[0-2]))?$/;
+
+/** date 형식(YYYY·YYYY-MM)이 틀리거나 title이 없는 항목은 버린다. */
+function parseMilestones(raw: unknown): Milestone[] | undefined {
+  if (!Array.isArray(raw)) return undefined;
+  const items = raw
+    .filter(isObject)
+    .map((m) => ({
+      date: str(m.date),
+      title: str(m.title),
+      detail: typeof m.detail === "string" ? m.detail : undefined,
+    }))
+    .filter((m) => MILESTONE_DATE.test(m.date) && m.title !== "");
+  return items.length > 0 ? items : undefined;
+}
+
 export function parseExperience(raw: unknown): ExperienceItem[] {
   return asArray(raw)
     .filter(isObject)
@@ -117,6 +134,8 @@ export function parseExperience(raw: unknown): ExperienceItem[] {
       startDate: str(item.startDate),
       endDate: typeof item.endDate === "string" ? item.endDate : null,
       highlights: strArray(item.highlights),
+      milestones: parseMilestones(item.milestones),
+      currentFocus: typeof item.currentFocus === "string" && item.currentFocus !== "" ? item.currentFocus : undefined,
     }))
     .filter((item) => item.company !== "" || item.role !== "");
 }
