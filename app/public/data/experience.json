@@ -1,9 +1,32 @@
 [
   {
     "company": "솔트웨어 (Saltware)",
-    "role": "AWS · Kubernetes 엔지니어",
+    "role": "AWS MSP 클라우드 엔지니어",
     "startDate": "2022-01",
     "endDate": null,
+    "currentFocus": "컨테이너 기술 지원과 솔루션 미팅을 주로 담당 — AI 에이전트와 에이전트가 쓰는 툴링을 현장 업무에 적용해 실제 비즈니스 효과로 연결하는 방법에 집중",
+    "milestones": [
+      {
+        "date": "2022-01",
+        "title": "미들웨어 엔지니어로 입사",
+        "detail": "Tomcat · Red Hat JBoss · WildFly 설치·구축 전문"
+      },
+      {
+        "date": "2023-01",
+        "title": "오픈소스 전문팀으로 이동",
+        "detail": "Kubernetes와 기반 오픈소스 기술 지원"
+      },
+      {
+        "date": "2023-10",
+        "title": "MSP팀으로 이동",
+        "detail": "AWS 클라우드 업무 시작 — Kubernetes 병행, EKS 기술 지원"
+      },
+      {
+        "date": "2024-05",
+        "title": "솔루션 미팅으로 업무 확장",
+        "detail": "기술 지원을 넘어 고객 솔루션 미팅과 관련 업무 수행"
+      }
+    ],
     "highlights": [
       "ZenDesk 기반 AWS 기술·비용 문의 대응 — 누적 782건(Zendesk 기준) 처리, ECS·EKS·DevOps 티켓 에스컬레이션 전담",
       "1개 고객사 EKS 4개 클러스터 대리 운영 — dev/staging/prod 환경을 Terraform IaC로 분리 관리",
